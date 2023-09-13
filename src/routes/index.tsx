@@ -120,6 +120,11 @@ export const MoreDashboardRoutes = {
     name: 'Change Password',
     path: `/profile/change-password`,
     component: <ChangePassword />
+  },
+  HOME: {
+    name: 'Home',
+    path: `/`,
+    component: <FAQs />
   }
 };
 
