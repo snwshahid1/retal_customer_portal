@@ -1,0 +1,36 @@
+@font-face {
+    font-family: '29LT Zarid Sans';
+    src: url('29LTZaridSans-Thin.woff2') format('woff2'),
+        url('29LTZaridSans-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '29LT Zarid Sans';
+    src: url('29LTZaridSans-ExtraLight.woff2') format('woff2'),
+        url('29LTZaridSans-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '29LT Zarid Sans';
+    src: url('29LTZaridSans-Regular.woff2') format('woff2'),
+        url('29LTZaridSans-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: '29LT Zarid Sans';
+    src: url('29LTZaridSans-Medium.woff2') format('woff2'),
+        url('29LTZaridSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
