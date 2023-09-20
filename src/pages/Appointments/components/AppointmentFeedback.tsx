@@ -10,6 +10,7 @@ const AppointmentFeedback: FC<any> = () => {
         Tell us how was your last appointment?
       </h2>
       <div className="app-detail-list">
+        <h4>Appointment details</h4>
         <ul className="list-unstyled m-0 p-0">
           <li>
             <span>Date</span>
@@ -36,18 +37,25 @@ const AppointmentFeedback: FC<any> = () => {
 
       <div className="app-details-bottom">
         <div className="app-quality">
-          <label>Please </label>
+          <label>Please, evaluate the quality of the appointment.</label>
+          <div className="star-rating flex-base-wrapper justify-content-center flex-nowrap">
+            <i className="star-icon icon-primary"></i>
+            <i className="star-icon icon-primary"></i>
+            <i className="star-icon icon-primary"></i>
+            <i className="star-icon icon-primary"></i>
+            <i className="star-icon icon-gray"></i>
+          </div>
         </div>
 
-        <div className="form-field">
+        <div className="form-field mb-2">
           <label>Leave a comment</label>
           <TextAreaField 
             placeholder="Justify your rating reason here"
-            className="textbox textarea"
+            className="textbox textarea h-60"
           />
         </div>
         <div className="form-field">
-          <button className="theme-btn w-100">Send evaluation</button>
+          <button className="theme-btn btn-lg  mb-2 w-100">Send evaluation</button>
         </div>
       </div>
     </AppFeedbackWrapper>

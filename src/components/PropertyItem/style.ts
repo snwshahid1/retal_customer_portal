@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const Property = styled.div`
   position: relative;
   background: var(--white);
+  display: flex;
+  flex-direction: column;
 
   .property-image {
     width: 100%;
@@ -16,20 +18,21 @@ export const Property = styled.div`
 
   .property-detail {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 
     &-top {
-      border-bottom: 1px solid var(--lightest-shade);
-      padding: 0 0 20px;
-      margin: 0 0 20px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 10px;
+      padding: 0 0 20px;
 
       .property-title {
         h3 {
-          margin-bottom: 8px;
-          font-size: 20px;
+          margin-bottom: 4px;
+          font-size: 18px;
         }
         p {
           margin: 0;
@@ -60,6 +63,10 @@ export const Property = styled.div`
     }
 
     &-bottom {
+      border-top: 1px solid var(--lightest-shade);
+      padding: 20px 0 0;
+      margin: auto 0 0;
+
       a {
         font-weight: 500;
         color: var(--primary-color);

@@ -16,7 +16,7 @@ const ProfileSidebar: FC<any> = ( ) => {
         <div className="user-profile-img-wrapper">
           <div className="user-profile-img">
             <button className="edit-btn">
-              <i className="photo-icon"></i>
+              <i className="photo-icon sm-icon"></i>
             </button>
             {UserImage && <img src={UserImage} alt="" />}
           </div>

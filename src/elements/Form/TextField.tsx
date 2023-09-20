@@ -1,8 +1,20 @@
 import { FC, memo } from "react";
-import { TextBox } from "./style";
+import { TextBox, IconHolder } from "./style";
 
-const TextField: FC<any> = ({ type="text", className, name, id, placeholder, value, onChange, props }) => {
-  return (
+const TextField: FC<any> = ({
+  type = "text",
+  icon,
+  className,
+  iconClassName,
+  name,
+  id,
+  placeholder,
+  value,
+  onChange,
+  onClick,
+  props,
+}) => {
+  const TextField = (
     <TextBox
       type={type}
       className={className}
@@ -10,9 +22,19 @@ const TextField: FC<any> = ({ type="text", className, name, id, placeholder, val
       id={id}
       placeholder={placeholder}
       onChange={onChange}
+      onClick={onClick}
       value={value}
       {...props}
     />
+  );
+
+  return icon ? (
+    <IconHolder className={`icon-holder ${iconClassName ? iconClassName : ""}`}>
+      <span className="field-icon">{icon}</span>
+      {TextField}
+    </IconHolder>
+  ) : (
+    TextField
   );
 };
 

@@ -24,7 +24,7 @@ export const PropertiesHolder = styled.div`
 export const PropertiesDetailsHolder = styled.div`
 
   .property-top-section {
-    margin: 20px auto;
+    margin: 30px auto 20px;
     position: relative;
 
     .property-img-carousel {
@@ -32,14 +32,15 @@ export const PropertiesDetailsHolder = styled.div`
       
       img {
         width: 100%;
+        border-radius: 2px;
       }
 
       .slick-next {
-        right: 25px;
+        right: 15px;
       }
 
       .slick-prev {
-        left: 25px;
+        left: 15px;
       }
 
       .slick-next,
@@ -71,17 +72,33 @@ export const PropertiesDetailsHolder = styled.div`
       position: absolute;
       bottom: 20px;
       right: 15px;
+      font-size: 13px;
     }
   }
   .property-info {
     width: 100%;
 
-    @media ${DeviceUp.md} {
+    @media ${DeviceUp.lg} {
       width: calc(70% - 20px);
     }
 
     .property-name-loc {
       width: 40%;
+
+      h3 {
+        font-size: 20px;
+      }
+
+      .property-loc {
+        padding-left: 20px;
+        position: relative;
+
+        i {
+          position: absolute;
+          left: 0;
+          top: 5px;
+        }
+      }
     }
 
     .propery-info-carousel-wrapper {
@@ -121,30 +138,50 @@ export const PropertiesDetailsHolder = styled.div`
           strong {
             display: block;
             margin-top: 5px;
+            font-weight: 500;
+            font-size: 13px;
           }
         }
       }
+    }
+
+    .propery-map {
+      margin-top: 20px;
     }
   }
 
   .property-details {
     width: 100%;
     background: var(--white);
-    padding: 20px 15px;
+    padding: 20px;
+    font-size: 12px;
 
-    @media ${DeviceUp.md} {
+    @media ${DeviceUp.lg} {
       width: 30%;
     }
 
     .property-widget:not(:last-child) {
       border-bottom: 1px solid var(--lightest-shade);
-      padding: 0 0 10px;
-      margin: 0 0 10px;
+      padding: 0 0 20px;
+      margin: 0 0 25px;
     }
 
     .project-update {
       display: flex;
       align-items: flex-start;
+
+      .project-date {
+        border: 1px solid rgba(112, 112, 112, 0.2);
+        display: inline-block;
+        padding: 7px 12px;
+        margin-bottom: 15px;
+        color: var(--dark-grey);
+        font-size: 12px;
+      }
+
+      p {
+        line-height: 18px;
+      }
 
       & > img {
         width: 80px;
@@ -155,7 +192,8 @@ export const PropertiesDetailsHolder = styled.div`
     }
 
     h5 {
-      font-size: 20px;
+      font-size: 16px;
+      margin-bottom: 16px;
     }
 
     .property-info-list {

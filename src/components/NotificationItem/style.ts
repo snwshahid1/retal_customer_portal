@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 export const NotificationWrapper = styled.div`
-  padding: 15px 30px;
+  padding: 16px 30px;
   position: relative;
   border-bottom: 1px solid var(--lightest-shade);
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   &.unread-item {
     &::before {
@@ -14,23 +18,31 @@ export const NotificationWrapper = styled.div`
       top: 0;
       bottom: 0;
       height: 40px;
-      background: red;
+      background: rgb(var(--theme-green));
       width: 5px;
     }
-    background: pink;
+    background: #EDE7E5;
+    border-bottom-color: #EDE7E5; 
   }
 
   a {
     display: flex;
-    align-item: flex-start;
+    align-items: flex-start;
 
     .notification-text {
       flex-grow: 1;
       position: relative;
       padding-right: 70px;
+      padding-top: 5px;
+
+      h5 {
+        font-size: 15px;
+        margin-bottom: 4px;
+      }
 
       p {
         margin: 0;
+        font-size: 13px;
       }
 
       .notify-time {
@@ -38,29 +50,32 @@ export const NotificationWrapper = styled.div`
         right: 0;
         top: 0;
         font-size: 13px;
+        color: var(--dark-grey);
+        opacity: 0.5;
       }
     }
 
     .img-holder {
-      min-width: 36px;
-      margin-right: 15px;
+      min-width: 40px;
+      margin-right: 20px;
       position: relative;
 
       img {
-        width: 36px;
-        height: 36px;
+        min-width: 40px;
+        width: 40px;
+        height: 40px;
       }
 
       .unread-bubble {
         display: inline-block;
-        width: 10px;
-        height: 10px;
+        width: 14px;
+        height: 14px;
         background: rgb(var(--theme-green));
-        border: 2px solid var(--white);
+        border: 3px solid var(--white);
         border-radius: 100%;
         position: absolute;
         right: 0;
-        bottom: 8px;
+        bottom: -3px;
       }
     }
   }

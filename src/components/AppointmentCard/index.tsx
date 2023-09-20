@@ -11,10 +11,13 @@ const AppointmentCard: FC<any> = ({ appointmentID, title, property, date }) => {
       </div>
       <div className="card-item-bottom">
         <span className="app-loc">
-          <i className="map-marker-icon"></i>
+          <i className="sm-icon me-1 map-marker-icon"></i>
           {property}
         </span>
-        <span className="app-date">{date}</span>
+        <span className="app-date">
+          <i className="sm-icon me-1 clock-icon"></i>
+          {date}
+        </span>
       </div>
     </CardItem>
   );

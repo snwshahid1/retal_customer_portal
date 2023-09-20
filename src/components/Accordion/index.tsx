@@ -12,7 +12,6 @@ const AccordionComp: FC<any> = ({ items, openMultiple=false }) => {
       {items.map(({ header, content }: any, i: number) => (
         <AccordionItem value={header} key={i}>
           {content}
-          
         </AccordionItem>
       ))}
     </Accordion>

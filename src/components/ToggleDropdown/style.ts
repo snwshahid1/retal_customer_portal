@@ -7,13 +7,18 @@ export const DropDown = styled.div`
   opacity: 0;
   padding: 8px;
   position: absolute;
-  right: 0;
   left: 0;
+  right: 0;
   transition: transform .2s,opacity .2s,visibility 0s linear .2s;
   visibility: hidden;
   width: 175px;
   will-change: transform;
   z-index: 99;
+
+  &.menu-align-right {
+    left: inherit;
+    right: 0;
+  }
 
   &.visible {
     opacity: 1;

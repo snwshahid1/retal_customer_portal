@@ -1,13 +1,14 @@
 import { FC, memo } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HeaderWrapper, NotifyBubble, NotifyIcon } from "./style"
 
 const Header: FC<any> = () => {
-  
+  const navigate = useNavigate();
+
   return (
     <HeaderWrapper>
       <div className="d-inline-flex align-items-center ms-auto">
-        <NotifyIcon>
+        <NotifyIcon onClick={() => navigate('/notifications')}>
           <NotifyBubble />
           <i className="sm-icon bell-icon"></i>
         </NotifyIcon>

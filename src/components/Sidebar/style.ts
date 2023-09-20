@@ -195,6 +195,10 @@ export const ContactBox = styled.div`
 
   p {
     font-size: 13px;
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
 
   .theme-btn {
@@ -211,6 +215,10 @@ export const UserProfile = styled.div`
 
   .toggleMenu {
     margin-left: auto;
+
+    .dots-icon {
+      opacity: 0.3;
+    }
 
     li {
       a {

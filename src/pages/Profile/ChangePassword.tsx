@@ -31,7 +31,7 @@ const ChangePassword = () => {
         <div className="detail-content">
           <div className="page-title-holder flex-base-wrapper">
             <PageTitle title="Change Password" subtitle="You can change your password here" />
-            <button className="theme-btn">Save</button>
+            <button className="theme-btn min-130">Save</button>
           </div>
 
           <div className="form-wrapper">

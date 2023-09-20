@@ -1,7 +1,11 @@
 import { map } from "lodash";
 import { Routes, Route } from "react-router-dom";
 
+// Layouts
 import DashboardLayout from 'src/layouts/Dashboard';
+import DefaultLayout from 'src/layouts/Default';
+
+// Pages
 import Contact from "src/pages/Contact";
 import FAQs from "src/pages/FAQs";
 import Gitfts from "src/pages/Gifts";
@@ -14,12 +18,16 @@ import MyProfile from "src/pages/Profile";
 import ChangePassword from "src/pages/Profile/ChangePassword";
 import Appointments from "src/pages/Appointments";
 import Payments from "src/pages/Payments";
+import Tickets from "src/pages/Tickets";
+import Dashboard from "src/pages/Dashboard";
 
 export const RoutesHOC = (routes: any) => {
   return () => {
     return (
       <Routes>
-        <Route element={<DashboardLayout />}>
+        {routes.map( ({layout: Layout, routes}: any, i: number) => (
+          
+          <Route key={i} element={<Layout />}>
           {map(routes, route => {
             return (
               <Route
@@ -30,6 +38,18 @@ export const RoutesHOC = (routes: any) => {
             );
           })}
         </Route>
+        ))}
+        {/* <Route element={<DashboardLayout />}>
+          {map(routes, route => {
+            return (
+              <Route
+                key={route.name}
+                path={`${route.path}`}
+                element={route.component}
+              />
+            );
+          })}
+        </Route> */}
       </Routes>
     );
   };
@@ -41,7 +61,7 @@ export const EssentialsRoutes = {
     name: 'Dashboard',
     path: `/dashboard`,
     iconClass: 'nav-dashboard-icon',
-    component: <FAQs />,
+    component: <Dashboard />,
   },
   PROPERTIES: {
     name: 'Properties',
@@ -80,7 +100,7 @@ export const ServicesRoutes = {
     name: 'Raise Ticket',
     path: `/create-ticket`,
     iconClass: 'nav-ticket-icon',
-    component: <FAQs />,
+    component: <Tickets />,
   },
   APPOINTMENT: {
     name: 'Request Appointment',
@@ -128,6 +148,18 @@ export const MoreDashboardRoutes = {
   }
 };
 
-const DashboardRouters = {...EssentialsRoutes, ...ServicesRoutes, ...MoreDashboardRoutes}
+const DashboardRouters1 = {...EssentialsRoutes, ...ServicesRoutes, ...MoreDashboardRoutes}
+const DefaultRouters1 = { }
 
-export const DashboardRouter = RoutesHOC(DashboardRouters);
+const DashboardRouters = [{
+  layout: DashboardLayout,
+  routes: DashboardRouters1
+}];
+
+const DefaultRouters = [{
+  layout: DefaultLayout,
+  routes: DefaultRouters1
+}];
+
+const AppRouters = [...DashboardRouters, ...DefaultRouters];
+export const AppRouter = RoutesHOC(AppRouters);
