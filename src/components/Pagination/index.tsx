@@ -33,7 +33,7 @@ const Pagination: FC<any> = ({
   const handlePrevious = React.useCallback(() => onChangePage(currentPage - 1), [currentPage, onChangePage]);
 	const handleNext = React.useCallback(() => onChangePage(currentPage + 1), [currentPage, onChangePage]);
 
-  const paginationSize = [1, 50, 100];
+  const paginationSize = [10, 50, 100];
   return (
     <PaginationHolder>
       <div className="items-per-page d-flex">

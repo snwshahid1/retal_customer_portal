@@ -64,17 +64,17 @@ const Sidebar: FC<any> = () => {
               <Link to="#" onClick={() => setToggleMenu(!toggleMenu) } className="hide-sm-nav">
                 <i className="sm-icon dots-icon"></i>
               </Link>}
-            className={toggleMenu ? 'visible' : ''}
+            visible={toggleMenu ? 'visible' : ''}
           >
             <ul className="list-unstyled m-0 p-0">
-              <li>
+              <li onClick={() => setToggleMenu(false)}>
                 <Link to="/profile">
                   <i className="user-icon"></i>
                   <span>My Profile</span>
                 </Link>
               </li>
 
-              <li>
+              <li onClick={() => setToggleMenu(false)}>
                 <Link to="/profile">
                   <i className="logout-icon"></i>
                   <span>Logout</span>

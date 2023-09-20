@@ -30,7 +30,7 @@ export const QuickAccessWrapper = styled.div`
       border-color: #F5EAE5;
     }
     &.qc-border-8 {
-      border-color: #5AC2D0;
+      border-color: #D1EDF1;
     }
     &.qc-border-9 {
       border-color: #FFFAE8;
@@ -43,7 +43,7 @@ export const QuickAccessWrapper = styled.div`
       flex-direction: column;
       height: 60px;
       padding: 5px;
-      font-size: 15px; 
+      font-size: 11px; 
 
       i {
         display: inline-block;

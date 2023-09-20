@@ -7,8 +7,8 @@ export const PaginationHolder = styled.div`
   justify-content: space-between;
   background: var(--white);
   border-top: 1px solid var(--lightest-shade);
-  padding: 10px 15px;
-  margin: 0 -25px;
+  padding: 8px 15px;
+  margin: 15px -25px 0;
 
   & div {
     align-items: center;
@@ -39,14 +39,14 @@ export const PaginationHolder = styled.div`
       background: none;
       cursor: pointer;
       font-family: inherit;
-      font-size: 14px;
+      font-size: 12px;
 
       &:not(:last-child) {
         border-right: 1px solid var(--lightest-shade);
       }
 
       &.active-item {
-        background: red;
+        background: #F5F5F7;
 
         &:first-child {
           border-radius: 5px 0 0 5px;

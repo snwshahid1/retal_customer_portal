@@ -8,7 +8,7 @@ import ToggleDropdown from "src/components/ToggleDropdown";
 import { useClickAway } from "@uidotdev/usehooks";
 import { Link } from "react-router-dom";
 
-const AppointmentDetails: FC<any> = ( {newAppointmentForm} ) => {
+const AppointmentDetails: FC<any> = ( {newAppointmentForm, openModal} ) => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const ref = useClickAway(() => {
@@ -20,19 +20,20 @@ const AppointmentDetails: FC<any> = ( {newAppointmentForm} ) => {
       <ToggleDropdown
         ref={ref}
         toggleCTA={<i className="sm-icon icon-black dots-icon" onClick={() => setToggleMenu(!toggleMenu) }></i>}
-        className={toggleMenu ? 'visible' : ''}
+        visible={`${toggleMenu ? 'visible' : ''}`}
+        className="menu-align-right"
       >
         <ul className="list-unstyled m-0 p-0">
           <li>
-            <Link to="/profile">
-              <i className="user-icon"></i>
+            <Link to="#" onClick={() => openModal()}>
+              <i className="reschedule-icon"></i>
               <span>Reschedule</span>
             </Link>
           </li>
 
           <li>
             <Link to="/profile">
-              <i className="logout-icon"></i>
+              <i className="cancel-icon"></i>
               <span>Cancel meeting</span>
             </Link>
           </li>
@@ -94,7 +95,8 @@ const AppointmentDetails: FC<any> = ( {newAppointmentForm} ) => {
       <div className="detail-comments d-flex align-items-start">
         <span className="comment-title">Comment</span>
         <div className="comment-text">
-          Lorem Ispsum simply dummy text.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+          Etiam elit lacus, aliquet sed blandit at, bibendum.
         </div>
       </div>
 
@@ -109,7 +111,6 @@ const AppointmentDetails: FC<any> = ( {newAppointmentForm} ) => {
           <img src={MapImg} alt="" />
         </div>
       </div>
-
     </AppointmentDetailWrapper>
   );
 };

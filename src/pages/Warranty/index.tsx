@@ -23,7 +23,7 @@ const Warranty = () => {
               <p>Customer <strong>#2861493</strong></p>
               <div className="member-dates">
                 <p>
-                  Start date: May 28, 2023 | Expiration date: May 28, 2024
+                  <strong>Start date:</strong> May 28, 2023 |  <strong>Expiration date:</strong> May 28, 2024
                 </p>
               </div>
             </div>

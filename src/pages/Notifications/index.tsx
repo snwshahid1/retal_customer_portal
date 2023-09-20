@@ -1,26 +1,59 @@
 import PageTitle from "src/components/PageTitle"
 import NotificationItem from "src/components/NotificationItem";
 
-import UserImage from "src/assets/images/user-img1.png";
 import Navbar from "src/components/Navbar";
 import Pagination from "src/components/Pagination";
 import { useState } from "react";
+import UserImage1 from "src/assets/images/n-user-img1.png";
+import UserImage2 from "src/assets/images/n-user-img2.png";
+import UserImage3 from "src/assets/images/n-user-img3.png";
+import UserImage4 from "src/assets/images/n-user-img4.png";
+import UserImage5 from "src/assets/images/n-user-img5.png";
+import UserImage6 from "src/assets/images/n-user-img6.png";
 
 const Notifications = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage, setRecordsPerPage] = useState(1);
+  const [recordsPerPage, setRecordsPerPage] = useState(10);
   const Notifications = [
     {
-      imageURL: UserImage,
-      title: "Title",
-      text: "Text",
+      imageURL: UserImage1,
+      title: "Dr. Sam Wilkinson",
+      text: "Hey Tom! I was just wondering if you Have had time to go over the new Revisions for the upcom...",
       time: "3 min ago",
       read: false
     },
     {
-      imageURL: UserImage,
-      title: "Titel",
-      text: "Text",
+      imageURL: UserImage2,
+      title: "Ms. Sonja Schaden",
+      text: "Hey Tom! I was just wondering if you Have had time to go over the new ?",
+      time: "3 min ago",
+      read: true
+    },
+    {
+      imageURL: UserImage3,
+      title: "Keith Morissette",
+      text: "Hey Tom! I was just wondering if you Have had time to go over the new ?",
+      time: "3 min ago",
+      read: true
+    },
+    {
+      imageURL: UserImage4,
+      title: "Damien Mills",
+      text: "Hey Tom! I was just wondering if you Have had time to go over the new ?",
+      time: "3 min ago",
+      read: false
+    },
+    {
+      imageURL: UserImage5,
+      title: "Miguel Okeef",
+      text: "Hey Tom! I was just wondering if you Have had time to go over the new Revisions for the upcom...",
+      time: "3 min ago",
+      read: true
+    },
+    {
+      imageURL: UserImage6,
+      title: "Achraf Azaiez",
+      text: "Hey Tom! I was just wondering if you Have had time to go over the new ?",
       time: "3 min ago",
       read: true
     }
@@ -30,8 +63,8 @@ const Notifications = () => {
     setCurrentPage(currentPage);
   };
 
-  const handleRowsPerPageChange = (numOfRows: any, currentPage: any) => {
-    setCurrentPage(currentPage);
+  const handleRowsPerPageChange = (numOfRows: any) => {
+    setCurrentPage(1);
     setRecordsPerPage(numOfRows);
   };
 

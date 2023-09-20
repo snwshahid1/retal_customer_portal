@@ -23,11 +23,10 @@ const NewAppointment: FC<any> = ( {} ) => {
 
   return (
     <NewAppointmentWrapper>
+      <h2>
+        New appointment
+      </h2>
       <div className="new-appointment-top">
-        <h2>
-          New appointment
-        </h2>
-
         <FormField 
           className="bg-grey-field"
           label="Select a property"
@@ -87,6 +86,8 @@ const NewAppointment: FC<any> = ( {} ) => {
               placeholder="Select Date"
               value={inputs.date}
               onChange={handleChange}
+              icon={<i className="sm-icon calendar-icon-v3"></i>}
+              iconClassName='icon-end'
             />
           }
         />

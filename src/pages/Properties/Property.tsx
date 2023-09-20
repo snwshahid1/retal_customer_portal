@@ -95,7 +95,7 @@ const Property = () => {
     <>
       <PropertiesDetailsHolder>
         <Link to="/properties">
-          <i className="sm-icon arrow-icon-right arrow-icon icon-black me-1"></i> 
+          <i className="sm-icon arrow-icon-right arrow-icon icon-black me-2"></i> 
           Back to properties
         </Link>
 
@@ -113,7 +113,7 @@ const Property = () => {
             </div>
             <span className="count-slides">{showSlide} / {PropertyCarouselImages.length}</span>
             <Link to="#" className="theme-btn construction-btn">
-              <i className="sm-icon camera-icon me-1"></i> Live construction
+              <i className="sm-icon camera-icon me-2"></i> Live construction
             </Link>
         </div>
 
@@ -123,6 +123,10 @@ const Property = () => {
               <div className="d-flex justify-content-between flex-wrap">
                 <div className="property-name-loc">
                   <h3>Ayala Al Nakheel</h3>
+                  <p className="property-loc">
+                    <i className="sm-icon map-marker-icon me-2"></i>
+                    Khobar • 128 Villa Ayala Al Nakheel, Khobar
+                  </p>
                 </div>
 
                 <div className="propery-info-carousel-wrapper">
@@ -216,7 +220,12 @@ const Property = () => {
               <div className="project-update">
                 <img src={PrjectUpdateImage} alt="" />
                 <div className="project-update-text">
-                  Lorem Ipsum text goes here.
+                  <span className="project-date">March 08, 2023</span>
+                  <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
+                    tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+                    consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
+                  </p>
                 </div>
               </div>
             </div>

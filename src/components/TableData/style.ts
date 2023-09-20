@@ -8,8 +8,9 @@ export const DataTableWrapper = styled.div`
   }
 
   .rdt_TableHeadRow {
-    color: red;
+    font-weight: 500;
+    color: #797979;
     border-top: 1px solid rgba(0,0,0,.12);
-    min-height: 30px;
+    min-height: 34px;
   }
 `;

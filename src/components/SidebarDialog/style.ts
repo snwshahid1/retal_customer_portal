@@ -1,3 +1,4 @@
+import { DeviceUp } from "src/styles/breakpoints";
 import styled from "styled-components";
 
 export const GrayoutWrapper = styled.div`
@@ -11,38 +12,59 @@ export const GrayoutWrapper = styled.div`
 `;
 
 export const Dialog = styled.dialog`
-  width: 350px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background: var(--white);
+  color: inherit;
   position: fixed;
   right: 0;
   top: 0;
   border-radius: 5px;
   min-height: 100vh;
-  z-index: 999;
-  display: block;
-  padding: 16px;
+  z-index: 99999;
+  padding: 20px 25px;
   border: none;
   left: auto;
   transition: transform 0.4s;
-  transform: translateX(350px);
+  transform: translateX(110%);
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
+  box-shadow: 0 3px 25px rgba(15, 28, 82, 0.15);
+
+  @media ${DeviceUp.sm} {
+    width: 400px;
+  }
 
   &.show-dialog {
     transform: translateX(0px);
   }
 
   .dialog-content {
-    height: 100%;
+    padding: 25px 0 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    h2 {
+      font-size: 22px;
+      padding-bottom: 10px;
+    }
   }
 
   .dialog-close-btn {
-    background: var(--lightest-shade);
+    background: var(--light-gray);
     border: none;
     cursor: pointer;
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
+    min-width: 30px;
+    min-height: 30px;
+    width: 30px;
+    height: 30px;
+    margin-left: -4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 `;

@@ -33,7 +33,7 @@ const MyProfile = () => {
         <div className="detail-content">
           <div className="page-title-holder flex-base-wrapper">
             <PageTitle title="Personal Informations" subtitle="You can edit your personal information here" />
-            <button className="theme-btn">Save</button>
+            <button className="theme-btn min-130">Save</button>
           </div>
 
           <div className="form-wrapper">
@@ -69,11 +69,13 @@ const MyProfile = () => {
               label="Your Phone Number"
               control={
                 <TextField
-                  className="textbox"
+                  className="textbox icon-right-long"
                   name="phone"
                   id="phone"
                   placeholder="Phone"
                   value={inputs.phone}
+                  icon={<span className="color-primary">Confirmed <i className="sm-icon verified-icon"></i></span>}
+                  iconClassName='icon-end'
                   onChange={(event: any) => handleChange(event)}
                 />
               }
@@ -89,6 +91,8 @@ const MyProfile = () => {
                   placeholder="Email"
                   value={inputs.email}
                   onChange={(event: any) => handleChange(event)}
+                  icon={<span className="color-primary">Confirmed <i className="sm-icon verified-icon"></i></span>}
+                  iconClassName='icon-end'
                 />
               }
             />
