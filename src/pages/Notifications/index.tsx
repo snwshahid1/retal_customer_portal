@@ -93,7 +93,9 @@ const Notifications = () => {
         <PageTitle title="Notifications" subtitle="Find here all of your Notifications" />        
       </div>
       <div className="notifications-wrapper">
-        <Navbar navbarLinks={navbarLinks} />
+        <div className="mb-20">
+          <Navbar navbarLinks={navbarLinks} />
+        </div>
         {NotificationsData.map( (item, i) => (
           <NotificationItem {...item} key={i} />
         ))}

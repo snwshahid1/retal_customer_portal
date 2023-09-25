@@ -7,8 +7,9 @@ export const SearchbarWrapper = styled.div`
   margin: 6px 0;
   width: 100%;
 
-  @media ${DeviceUp.md} {
+  @media ${DeviceUp.lg} {
     width: 300px;
+    margin-left: auto;
   }
 
 

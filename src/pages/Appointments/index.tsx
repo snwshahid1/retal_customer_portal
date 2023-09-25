@@ -9,8 +9,74 @@ import AppointmentDetails from "./components/AppointmentDetails"
 import { Link } from "react-router-dom"
 import AppointmentFeedback from "./components/AppointmentFeedback"
 import Modal from "src/components/Modal";
+import { FilterHolder } from "src/styles/commonStyle"
+import SelectField from "src/elements/Form/SelectField"
+import DatePickerField from "src/components/DatePickerField"
+import { useClickAway } from "@uidotdev/usehooks"
 
 const Appointments = () => {
+  const [ startDate, setStartDate ] = useState(null);
+  const [ endDate, setEndDate ] = useState(null);
+  const [ isOpenDialog, setIsOpenDialog ] = useState(false);
+  const [ newApp, setNewApp ] = useState(false);
+  const [ appDetails, setAppDetails ] = useState(false);
+  const [ appFeedback, setAppFeedback ] = useState(false);
+  const [ isOpenModal, setIsOpenModal] = useState(false);
+  const [ isScheduleMeeting, setIsScheduleMeeting] = useState(false);
+  const [ isCancelMeeting, setIsCancelMeeting] = useState(false);
+
+  const onDateChange = (dates: any) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+  const ref = useClickAway(() => {
+    setIsOpenModal(false);
+  });
+
+  const closeModal = () => {
+    setIsCancelMeeting(false);
+    setIsScheduleMeeting(false);
+    setIsOpenModal(false);
+  }
+  const openModal = () => {
+    handleCloseDialog();
+    setIsOpenModal(true);
+  }
+
+  const scheduleMeetingHandle = () => {
+    setIsCancelMeeting(false);
+    setIsScheduleMeeting(true);
+  }
+  const cancelMeetingHandle = () => {
+    setIsScheduleMeeting(false);
+    setIsCancelMeeting(true);
+  }
+
+  const handleCloseDialog = () => setIsOpenDialog(false);
+
+  const openNewAppointment = () => {
+    setAppDetails(false);
+    setAppFeedback(false);
+    setNewApp(true);
+    setIsOpenDialog(true); 
+  }
+
+  const openAppointmentFeedback = () => {
+    setAppDetails(false);
+    setNewApp(false);
+    setAppFeedback(true);
+    setIsOpenDialog(true); 
+  }
+
+  const openAppointmentDetail = () => {
+    setAppDetails(true);
+    setNewApp(false);
+    setAppFeedback(false);
+    setIsOpenDialog(true); 
+  }
+
   const AppointmentsData = [
     {
         appointmentID: "#8726914B",
@@ -74,41 +140,6 @@ const Appointments = () => {
     },
   ];
 
-  const [ isOpenDialog, setIsOpenDialog ] = useState(false);
-  const [ newApp, setNewApp ] = useState(false);
-  const [ appDetails, setAppDetails ] = useState(false);
-  const [ appFeedback, setAppFeedback ] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const closeModal = () => setIsOpenModal(false);
-  const openModal = () => {
-    handleCloseDialog();
-    setIsOpenModal(true);
-  }
-
-  const handleCloseDialog = () => setIsOpenDialog(false);
-
-  const openNewAppointment = () => {
-    setAppDetails(false);
-    setAppFeedback(false);
-    setNewApp(true);
-    setIsOpenDialog(true); 
-  }
-
-  const openAppointmentFeedback = () => {
-    setAppDetails(false);
-    setNewApp(false);
-    setAppFeedback(true);
-    setIsOpenDialog(true); 
-  }
-
-  const openAppointmentDetail = () => {
-    setAppDetails(true);
-    setNewApp(false);
-    setAppFeedback(false);
-    setIsOpenDialog(true); 
-  }
-
   return (
     <AppointmentsWrapper>
       
@@ -122,6 +153,8 @@ const Appointments = () => {
           <AppointmentDetails 
             newAppointmentForm={openAppointmentFeedback}
             openModal = {openModal}
+            scheduleMeeting = {scheduleMeetingHandle}
+            cancelMeeting = {cancelMeetingHandle}
           />
         }
         {appFeedback && <AppointmentFeedback /> }
@@ -135,10 +168,31 @@ const Appointments = () => {
       </div>
 
       <div className="filter-section flex-base-wrapper">
-        <div className="appointments-filters">
+        <FilterHolder className="filter-holder mb-20">
+          <SelectField
+            name="property"
+            id="property"
+            className="textbox selectbox"
+            options={[
+              { label: "Filter by property", value: "" },
+              { label: "Ewan Sedra", value: "Ewan Sedra" },
+              { label: "Retal Rise", value: "retal rise" },
+              { label: "Alaya Al Nakeel", value: "Alaya Al Nakeel" },
+            ]}
+          />
 
+          <DatePickerField
+            placeholderText="Choose Date"
+            selected={startDate}
+            onChange={onDateChange}
+            startDate={startDate}
+            endDate={endDate}
+            selectsRange
+          />
+        </FilterHolder>
+        <div className="mb-20 flex-grow">
+          <Searchbar placeholder="Search an appointment" />
         </div>
-        <Searchbar placeholder="Search an appointment"  />
       </div>
 
       <div className="d-grid appointments-cards-wrapper gap-10">
@@ -149,19 +203,36 @@ const Appointments = () => {
         ))}
       </div>
 
-      <Modal onClose={closeModal} open={isOpenModal}>
-        <div className="px-40 text-center">
-          <i className="calendar-icon2 mb-1"></i>
-          <i className="cancel-icon2 mb-1"></i>
-          <h2>Are you sure you want to reschedule ?</h2>
-          <p>
-            By clicking yes, it will cancel the previous meeting and replace it by the new one.
-          </p>
-        </div>
+      {isScheduleMeeting && (
+        <Modal onClose={closeModal} open={isOpenModal} className="modal-sm" ref={ref}>
+          <div className="px-25 text-center mb-2 pb-1">
+            <i className="calendar-icon2 mb-1"></i>
+            <h2>Are you sure you want to reschedule ?</h2>
+            <p>
+              By clicking yes, it will cancel the previous meeting and replace it by the new one.
+            </p>
+          </div>
 
-        <button className="theme-btn btn-lg w-100 mb-2">Yes</button>
-        <button onClick={() => closeModal} className="theme-btn theme-btn-white btn-lg w-100">Cancel</button>
-      </Modal>
+          <button className="theme-btn btn-lg w-100 mb-2 no-shadow">Yes</button>
+          <button onClick={() => closeModal()} className="theme-btn theme-btn-border btn-lg w-100">Cancel</button>
+        </Modal>
+      )}
+
+      {isCancelMeeting && (
+        <Modal onClose={closeModal} open={isOpenModal} className="modal-sm" ref={ref}>
+          <div className="px-25 text-center mb-2 pb-1">
+            <i className="cancel-icon2 mb-1"></i>
+            <h2>Are you sure you want to cancel this meeting ?</h2>
+            <p>
+              By clicking yes, it will be permanently canceled
+            </p>
+          </div>
+
+          <button className="theme-btn btn-lg w-100 mb-2 no-shadow">Yes</button>
+          <button onClick={() => closeModal()} className="theme-btn theme-btn-border btn-lg w-100">Cancel</button>
+        </Modal>
+      )}
+
     </AppointmentsWrapper>
   )
 }

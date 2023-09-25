@@ -22,6 +22,53 @@ export const NewAppointmentWrapper = styled.div`
     background: var(--white);
     margin: 0 -25px;
   }
+
+  .bg-grey-field {
+    background: #FAFAFA;
+  }
+
+  .px-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .time-slots-wrapper {
+    gap: 7px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    margin-bottom: 15px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+    .time-slot {
+      position: relative;
+
+      label {
+        background: var(--white);
+        border: 1px solid var(--lightest-shade);
+        padding: 10px 5px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+      }
+
+      input[type="radio"] {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        &:checked + label {
+          color: var(--white);
+          background: var(--primary-color);
+          border-color: var(--primary-color);
+        }
+      }
+    }
+  }
 `;
 
 export const AppointmentDetailWrapper = styled.div`

@@ -1,3 +1,4 @@
+import { DeviceDown } from "src/styles/breakpoints";
 import styled from "styled-components";
 
 export const ResponsiveModal = styled.div`
@@ -5,7 +6,7 @@ export const ResponsiveModal = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 990;
+  z-index: 99999;
   background: rgba(0, 0, 0, 0.4);
   top: 0;
   left: 0;
@@ -29,23 +30,25 @@ export const ResponsiveModal = styled.div`
     background: var(--white);
     position: fixed;
     max-width: 620px;
-    width: 84%;
+    width: 90%;
     max-height: 90%;
     top: 50%;
     padding: 40px 30px;
-    left: calc(50% + 110px);
+    left: calc(50%);
     transform: translate(-50%, -50%);
-    transition: all 0.3s;
+    transition: all 0.5s;
     margin: auto;
     overflow: auto;
     padding: 0 25px;
     margin: 0 auto;
     max-width: 650px;
-    width: 100%;
+
+    @media ${DeviceDown.md} {
+      left: 50% !important;
+    }
 
     &.modal-sm {
       max-width: 420px;
-      width: 100%;
     }
 
     .modal-content {

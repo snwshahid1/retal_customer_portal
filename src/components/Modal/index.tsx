@@ -1,18 +1,39 @@
-import { FC, memo } from "react";
+import { forwardRef, memo, useEffect, useState } from "react";
 import { ResponsiveModal } from "./style";
 
-const Modal: FC<any> = ({ open, onClose, children }) => {
+const Modal = forwardRef(function Modal(
+  { className, open, onClose, children }: any,
+  ref: any
+) {
+  const [sidebarWidth, setSidebarWidth] = useState<number>(0);
+  const AppSidebar = document
+    .getElementById("app-sidebar")
+    ?.getBoundingClientRect();
+  const AppSidebarWidth = AppSidebar?.width;
 
-	return (
-		<ResponsiveModal className={open === true ? 'show-modal' : ''}>
-			<div className="popup-modal-inner modal-sm">
-				<div className="modal-content">
-					<button className="close-popup" aria-label="Close" onClick={onClose}></button>
-					{children}
-				</div>
-			</div>
-		</ResponsiveModal>
-	);
-};
+  useEffect(() => {
+    setSidebarWidth(AppSidebarWidth ? AppSidebarWidth : 0);
+    console.log("Shahid", AppSidebarWidth);
+  }, [AppSidebarWidth]);
+
+  return (
+    <ResponsiveModal className={open === true ? "show-modal" : ""}>
+      <div
+				ref={ref}
+        className={`popup-modal-inner ${className ? className : ""}`}
+        style={{ left: `calc(50% + ${sidebarWidth / 2}px)`}}
+      >
+        <div className="modal-content">
+          <button
+            className="close-popup"
+            aria-label="Close"
+            onClick={onClose}
+          ></button>
+          {children}
+        </div>
+      </div>
+    </ResponsiveModal>
+  );
+});
 
 export default memo(Modal);

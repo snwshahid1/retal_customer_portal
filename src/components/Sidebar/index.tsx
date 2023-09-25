@@ -33,6 +33,7 @@ const Sidebar: FC<any> = () => {
       </HamburgerButton>
 
       <SidebarWrapper
+        id="app-sidebar"
         className={classNames( {
           active: Boolean(activeSidebar),
         })}

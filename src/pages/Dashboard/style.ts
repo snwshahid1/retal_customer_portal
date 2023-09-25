@@ -43,47 +43,6 @@ export const DashboardHolder = styled.div`
     }
   }
 
-  .slider-arrows {
-    display: flex;
-    align-items: flex-start;
-    min-width: 60px;
-    margin-left: 10px;
-    position: relative;
-    z-index: 1;
-
-    .slider-arrow {
-      background: var(--secondary-color);
-      width: 24px;
-      height: 24px;
-      min-width: 24px;
-      border-radius: 50%;
-      cursor: pointer;
-      border: none;
-      margin: 3px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-
-      &-left {
-        background: var(--light-gray);
-
-        i {
-          transform: scale(-1);
-          filter: invert(45%) sepia(96%) saturate(18%) hue-rotate(275deg) brightness(100%) contrast(104%);
-
-        }
-      }
-
-      i {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        background-size: contain;
-      }
-    }
-  }
-
   .property-progress-area {
     flex-grow: 1;
     width: 100%;
@@ -137,8 +96,8 @@ export const DashboardHolder = styled.div`
 
   .property-infos {
     border-bottom: 1px solid rgba(18, 18, 18, 0.05);
-    padding: 15px 0;
-    margin: 0 0 15px;
+    padding: 12px 0;
+    margin: 0 0 12px;
 
     .gap-5 {
       gap: 5px;
@@ -211,12 +170,60 @@ export const DashboardHolder = styled.div`
   }
 
   .progress-right {
-    min-width: 125px;
+    min-width: 160px;
+    flex-grow: 1;
   }
 
+  .circle-progress-holder {
+    position: relative;
+    width: 130px;
+    margin: -10px auto 0;
+
+    @media ${DeviceUp.lg} {
+      margin: -15px auto;
+    }
+    
+    .circle-center {
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      z-index: 3;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h2 {
+        margin: 0;
+        font-size: 24px;
+        font-family: var(--font-family);
+        font-weight: 500;
+      }
+
+      span {
+        font-weight: 500;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .progress-left {
+    @media ${DeviceDown.xs} {
+      width: 100%;
+    }
+  }
   .progress-steps {
     display: flex;
     gap: 6px;
+
+    @media ${DeviceDown.xs} {
+      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
 
     li {
       background: var(--light-gray);
@@ -258,7 +265,7 @@ export const DashboardHolder = styled.div`
   }
 
   .tasks-update {
-    margin: 10px 0 25px;
+    margin: 10px 0 0;
 
     h4 {
       display: flex;
@@ -487,6 +494,12 @@ export const DashboardHolder = styled.div`
           display: inline-block;
         }
       }
+    }
+  }
+
+  .progress-wrapper-inner {
+    @media ${DeviceUp.lg} {
+      flex-wrap: nowrap;
     }
   }
 

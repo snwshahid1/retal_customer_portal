@@ -46,7 +46,7 @@ export const Property = styled.div`
         padding: 10px;
         border: 1px solid;
         font-size: 12px;
-        font-weight: 500;
+        font-weight: 700;
         text-align: center;
         font-family: var(--font-family-secondary);
         min-width: 125px;

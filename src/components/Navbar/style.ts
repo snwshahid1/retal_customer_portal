@@ -6,7 +6,6 @@ export const NavbarList = styled.ul`
   display: inline-flex;
   list-style: none;
   padding: 5px 10px;
-  margin-bottom: 20px;
 
   li {
     margin: 0 4px;

@@ -1,5 +1,5 @@
-import { FC, memo, useState } from "react"
-import { AppointmentDetailWrapper } from "../style"
+import { FC, memo, useState } from "react";
+import { AppointmentDetailWrapper } from "../style";
 import AppointmentImage from "src/assets/images/appointment-detail-img.png";
 import UserImg1 from "src/assets/images/user-img1.png";
 import UserImg2 from "src/assets/images/user-img2.png";
@@ -8,7 +8,12 @@ import ToggleDropdown from "src/components/ToggleDropdown";
 import { useClickAway } from "@uidotdev/usehooks";
 import { Link } from "react-router-dom";
 
-const AppointmentDetails: FC<any> = ( {newAppointmentForm, openModal} ) => {
+const AppointmentDetails: FC<any> = ({
+  newAppointmentForm,
+  openModal,
+  scheduleMeeting,
+  cancelMeeting,
+}) => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const ref = useClickAway(() => {
@@ -19,29 +24,44 @@ const AppointmentDetails: FC<any> = ( {newAppointmentForm, openModal} ) => {
     <AppointmentDetailWrapper>
       <ToggleDropdown
         ref={ref}
-        toggleCTA={<i className="sm-icon icon-black dots-icon" onClick={() => setToggleMenu(!toggleMenu) }></i>}
-        visible={`${toggleMenu ? 'visible' : ''}`}
+        toggleCTA={
+          <i
+            className="sm-icon icon-black dots-icon"
+            onClick={() => setToggleMenu(!toggleMenu)}
+          ></i>
+        }
+        visible={`${toggleMenu ? "visible" : ""}`}
         className="menu-align-right"
       >
         <ul className="list-unstyled m-0 p-0">
           <li>
-            <Link to="#" onClick={() => openModal()}>
+            <Link
+              to="#"
+              onClick={() => {
+                scheduleMeeting();
+                openModal();
+              }}
+            >
               <i className="reschedule-icon"></i>
               <span>Reschedule</span>
             </Link>
           </li>
 
           <li>
-            <Link to="/profile">
+            <Link
+              to="#"
+              onClick={() => {
+                cancelMeeting();
+                openModal();
+              }}
+            >
               <i className="cancel-icon"></i>
               <span>Cancel meeting</span>
             </Link>
           </li>
         </ul>
       </ToggleDropdown>
-      <h2>
-        Appointment details
-      </h2>
+      <h2>Appointment details</h2>
       <div className="appointment-title-wrapper">
         <div className="appointment-img">
           <img src={AppointmentImage} alt="" />
@@ -95,13 +115,13 @@ const AppointmentDetails: FC<any> = ( {newAppointmentForm, openModal} ) => {
       <div className="detail-comments d-flex align-items-start">
         <span className="comment-title">Comment</span>
         <div className="comment-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-          Etiam elit lacus, aliquet sed blandit at, bibendum.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elit
+          lacus, aliquet sed blandit at, bibendum.
         </div>
       </div>
 
       <div className="appointment-bottom">
-        <button 
+        <button
           className="theme-btn w-100"
           onClick={() => newAppointmentForm()}
         >

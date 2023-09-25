@@ -31,7 +31,7 @@ border-bottom: 1px solid var(--light-gray-v1);
     margin: 0;
     padding: 25px 22px;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 700;
     text-align: left;
     background-color: transparent;
     border: none;

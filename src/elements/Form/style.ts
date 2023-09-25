@@ -9,7 +9,7 @@ let CommonStyle = `
   width: 100%;
 
   &.textbox {
-    height: 42px;
+    height: 40px;
     padding: 5px 15px;
     background: var(--white);
     border: 1px solid var(--lightest-shade);
@@ -19,6 +19,12 @@ let CommonStyle = `
     &:hover {
       border-color: var(--primary-color);
     }
+  }
+
+  &.textbox-v2 {
+    background: var(--light-gray-v1);
+    border-color: var(--light-gray-v1);
+    color: var(--secondary-color);
   }
 
   &.icon-right-long {
@@ -76,6 +82,12 @@ export const SelectBox = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   padding-right: 35px !important;
+  color: var(--secondary-color) !important;
+
+  option {
+    font-family: var(--font-family);
+    color: var(--secondary-color);
+  }
 `;
 
 export const IconHolder = styled.div`
