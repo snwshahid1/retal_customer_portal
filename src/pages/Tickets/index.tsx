@@ -7,12 +7,29 @@ import SidebarDialog from "src/components/SidebarDialog";
 import NewTicket from "./components/NewTicket";
 import TicketDetail from "./components/TicketDetail";
 import ReportProblem from "./components/ReportProblem";
+import Navbar from "src/components/Navbar";
+import { FilterHolder } from "src/styles/commonStyle";
+import SelectField from "src/elements/Form/SelectField";
+import DatePickerField from "src/components/DatePickerField";
 
 const Tickets = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [newTicket, setNewTicket] = useState(false);
   const [ticketDetail, setTicketDetail] = useState(false);
   const [reportProblem, setReportProblem] = useState(false);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  const onDateChange = (dates: any) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+  const navbarLinks = [
+    { label: "Open", slug: "/create-ticket" },
+    { label: "Closed", slug: "" },
+  ];
 
   const handleCloseDialog = () => setIsOpenDialog(false);
 
@@ -79,6 +96,42 @@ const Tickets = () => {
         </span>
       ),
     },
+    {
+      id: 2,
+      paymentId: "#8726914C",
+      property: "Alaya Al Nakheel",
+      dueDate: "Feb 27, 2023 at 09:45 am",
+      status: "In progress",
+      actions: (
+        <span className="table-icon" onClick={() => showTicketDetail()}>
+          <i className="sm-icon eye-icon"></i>
+        </span>
+      ),
+    },
+    {
+      id: 3,
+      paymentId: "#8726914C",
+      property: "Retal Rise",
+      dueDate: "Feb 27, 2023 at 09:45 am",
+      status: "Under review",
+      actions: (
+        <span className="table-icon" onClick={() => showTicketDetail()}>
+          <i className="sm-icon eye-icon"></i>
+        </span>
+      ),
+    },
+    {
+      id: 4,
+      paymentId: "#8726914C",
+      property: "Alaya Al Nakheel",
+      dueDate: "Feb 27, 2023 at 09:45 am",
+      status: "Under review",
+      actions: (
+        <span className="table-icon" onClick={() => showTicketDetail()}>
+          <i className="sm-icon eye-icon"></i>
+        </span>
+      ),
+    },
   ];
 
   return (
@@ -102,10 +155,55 @@ const Tickets = () => {
           Raise new ticket
         </button>
       </div>
-      <Searchbar placeholder="Search a ticket" />
+
+      <div className="flex-base-wrapper">
+        <FilterHolder className="filter-holder mb-20">
+          <SelectField
+            name="property"
+            id="property"
+            className="textbox selectbox"
+            options={[
+              { label: "Filter by property", value: "" },
+              { label: "Ewan Sedra", value: "Ewan Sedra" },
+              { label: "Retal Rise", value: "retal rise" },
+              { label: "Alaya Al Nakeel", value: "Alaya Al Nakeel" },
+            ]}
+          />
+
+          <SelectField
+            name="status"
+            id="status"
+            className="textbox selectbox"
+            options={[
+              { label: "Filter by Status", value: "" },
+              { label: "In progress", value: "In progress" },
+              { label: "Under review", value: "Under review" },
+              { label: "Closed", value: "Closed" },
+            ]}
+          />
+
+          <DatePickerField
+            placeholderText="Choose Date"
+            selected={startDate}
+            onChange={onDateChange}
+            startDate={startDate}
+            endDate={endDate}
+            selectsRange
+          />
+
+          <Navbar navbarLinks={navbarLinks} />
+        </FilterHolder>
+        <div className="mb-20 flex-grow">
+          <Searchbar placeholder="Search a ticket" />
+        </div>
+      </div>
 
       <div className="tickets-table-data">
-        <TableData columns={columns} data={data} />
+        <TableData 
+          columns={columns} 
+          data={data}
+          highlightOnHover= {true}
+        />
       </div>
     </TicketsWrapper>
   );

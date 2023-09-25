@@ -47,7 +47,21 @@ const LatestNews: FC<any> = () => {
     speed: 500,
     slidesToShow: 2.5,
     slidesToScroll: 1,
-    arrows: false
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 1.5,
+        }
+      },
+      {
+        breakpoint: 580,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
   };
 
   return (

@@ -20,6 +20,9 @@ import Appointments from "src/pages/Appointments";
 import Payments from "src/pages/Payments";
 import Tickets from "src/pages/Tickets";
 import Dashboard from "src/pages/Dashboard";
+import Home from "src/pages/Home";
+import SignIn from "src/pages/SignIn";
+import VerifyNumber from "src/pages/SignIn/VerifyNumber";
 
 export const RoutesHOC = (routes: any) => {
   return () => {
@@ -39,17 +42,6 @@ export const RoutesHOC = (routes: any) => {
           })}
         </Route>
         ))}
-        {/* <Route element={<DashboardLayout />}>
-          {map(routes, route => {
-            return (
-              <Route
-                key={route.name}
-                path={`${route.path}`}
-                element={route.component}
-              />
-            );
-          })}
-        </Route> */}
       </Routes>
     );
   };
@@ -140,25 +132,38 @@ export const MoreDashboardRoutes = {
     name: 'Change Password',
     path: `/profile/change-password`,
     component: <ChangePassword />
-  },
-  HOME: {
-    name: 'Home',
-    path: `/`,
-    component: <FAQs />
   }
 };
 
-const DashboardRouters1 = {...EssentialsRoutes, ...ServicesRoutes, ...MoreDashboardRoutes}
-const DefaultRouters1 = { }
+export const GeneralRoutes = {
+  HOME: {
+    name: 'Home',
+    path: `/`,
+    component: <Home />
+  },
+  SIGNIN: {
+    name: 'Sign In',
+    path: `/sign-in`,
+    component: <SignIn />
+  },
+  VERIFYNUMBER: {
+    name: 'Verify Number',
+    path: `/verify-number`,
+    component: <VerifyNumber />
+  }
+}
+
+const DashboardPages = {...EssentialsRoutes, ...ServicesRoutes, ...MoreDashboardRoutes}
+const GeneralPages = { ...GeneralRoutes }
 
 const DashboardRouters = [{
   layout: DashboardLayout,
-  routes: DashboardRouters1
+  routes: DashboardPages
 }];
 
 const DefaultRouters = [{
   layout: DefaultLayout,
-  routes: DefaultRouters1
+  routes: GeneralPages
 }];
 
 const AppRouters = [...DashboardRouters, ...DefaultRouters];

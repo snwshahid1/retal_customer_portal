@@ -5,16 +5,34 @@ import Searchbar from "src/components/Searchbar";
 import ContentBox from "src/components/ContentBox";
 import SidebarDialog from "src/components/SidebarDialog";
 import PaymentDetails from "./components/PaymentDetails";
+import SelectField from "src/elements/Form/SelectField";
+import Navbar from "src/components/Navbar";
+import DatePickerField from "src/components/DatePickerField";
+import { FilterHolder } from "src/styles/commonStyle";
 
 const Payments = () => {
   const [paymentDetails, setPaymentDetails] = useState(false);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  const onDateChange = (dates: any) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
   const handleCloseDialog = () => setIsOpenDialog(false);
 
   const showPaymentDetails = () => {
     setPaymentDetails(true);
     setIsOpenDialog(true);
   };
+
+  const navbarLinks = [
+    { label: "Incoming", slug: "/payments" },
+    { label: "Paid", slug: "/payments/paid" },
+  ];
 
   const columns = [
     {
@@ -224,9 +242,38 @@ const Payments = () => {
           title="Payments"
           subtitle="Find here all the your Payments"
         />
-        <Searchbar placeholder="Search a payment" />
       </div>
-      
+
+      <div className="flex-base-wrapper">
+        <FilterHolder className="filter-holder mb-20">
+          <SelectField
+            name="property"
+            id="property"
+            className="textbox selectbox"
+            options={[
+              { label: "Filter by property", value: "" },
+              { label: "Ewan Sedra", value: "Ewan Sedra" },
+              { label: "Retal Rise", value: "retal rise" },
+              { label: "Alaya Al Nakeel", value: "Alaya Al Nakeel" },
+            ]}
+          />
+
+          <DatePickerField
+            placeholderText="Choose Date"
+            selected={startDate}
+            onChange={onDateChange}
+            startDate={startDate}
+            endDate={endDate}
+            selectsRange
+          />
+
+          <Navbar navbarLinks={navbarLinks} />
+        </FilterHolder>
+        <div className="mb-20">
+          <Searchbar placeholder="Search a payment" />
+        </div>
+      </div>
+
       <div className="d-grid gap-10 payment-boxes">
         <ContentBox className="bg-green">
           <h3>140,937.00 SAR</h3>

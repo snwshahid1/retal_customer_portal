@@ -117,7 +117,6 @@ export const SidebarWrapper = styled.aside`
 
   h4 {
     text-transform: uppercase;
-    font-weight: 500;
     color: var(--white);
     margin-bottom: 5px;
   }

@@ -1,4 +1,13 @@
 @font-face {
+    font-family: 'Lucky Beauty';
+    src: url('Lucky-Beauty-Regular.woff2') format('woff2'),
+        url('Lucky-Beauty-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
     font-family: '29LT Zarid Sans';
     src: url('29LTZaridSans-Thin.woff2') format('woff2'),
         url('29LTZaridSans-Thin.woff') format('woff');

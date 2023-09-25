@@ -10,6 +10,7 @@ const TextField: FC<any> = ({
   id,
   placeholder,
   value,
+  maxlength,
   onChange,
   onClick,
   props,
@@ -24,6 +25,7 @@ const TextField: FC<any> = ({
       onChange={onChange}
       onClick={onClick}
       value={value}
+      maxLength={maxlength}
       {...props}
     />
   );

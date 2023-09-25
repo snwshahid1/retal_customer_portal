@@ -9,11 +9,12 @@ import LatestNews from "./components/LatestNews";
 import DocumentsList from "./components/DocumentsList";
 import ContentBox from "src/components/ContentBox";
 import SlickSlider from "src/components/SlickSlider";
-import GalleryImg1 from "src/assets/images/dashboard-gallery-img.png";
-import GalleryImg2 from "src/assets/images/news-img1.png";
 import SlickArrows from "./components/SlickArrows";
 import SidebarDialog from "src/components/SidebarDialog";
 import RateSalesTeam from "./components/RateSalesTeam";
+import CircleProgress from "src/elements/CircleProgress";
+import GalleryImg1 from "src/assets/images/dashboard-gallery-img.png";
+import GalleryImg2 from "src/assets/images/news-img1.png";
 
 const Dashboard = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
@@ -24,7 +25,7 @@ const Dashboard = () => {
 
   const gallerySliderSettings = {
     draggable: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -38,6 +39,20 @@ const Dashboard = () => {
     slidesToShow: 3.5,
     slidesToScroll: 1,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 2.5,
+        }
+      },
+      {
+        breakpoint: 420,
+        settings: {
+          slidesToShow: 1.5,
+        }
+      }
+    ]
   };
 
   return (
@@ -101,7 +116,7 @@ const Dashboard = () => {
 
               <div className="progress-wrapper">
                 <h5>Progression</h5>
-                <div className="d-flex">
+                <div className="progress-wrapper-inner flex-wrap d-flex gap-20">
                   <div className="progress-left flex-grow">
                     <ul className="progress-steps list-unstyled m-0 p-0">
                       <li>
@@ -140,22 +155,24 @@ const Dashboard = () => {
                         Task completed <span className="ms-auto">1/7</span>
                       </h4>
                     </div>
-
-                    <button
-                      className="theme-btn min-130"
-                      onClick={() => setIsOpenDialog(true)}
-                    >
-                      View details
-                    </button>
                   </div>
 
                   <div className="progress-right">
-                    {/* <div className="progress-bar"></div> */}
-                    {/* <div className="progress-circle">
-                      <div className="progress-circle-percentage"></div>
-                    </div> */}
+                    <div className="circle-progress-holder">
+                      <CircleProgress percentage={25} />
+                      <div className="circle-center">
+                        <h2>25%</h2>
+                        <span>progression</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                <button
+                  className="theme-btn min-140 mb-1"
+                  onClick={() => setIsOpenDialog(true)}
+                >
+                  View details
+                </button>
               </div>
             </div>
             <div className="dashboard-img-carousel">
@@ -199,7 +216,7 @@ const Dashboard = () => {
 
             <div className="white-bg-area box-shadow-inset">
               <MarketPlace />
-              <Link to="#">
+              <Link to="#" className="mt-1">
                 Go to Market Place
                 <i className="sm-icon md-arrow-icon icon-black ms-2"></i>
               </Link>

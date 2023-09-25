@@ -8,7 +8,7 @@ const FormField: FC<any> = ({
   className,
 }) => {
   return (
-    <FieldHolder className={`form-field ${className}`}>
+    <FieldHolder className={`form-field ${className ? className : ''}`}>
       <label className="field-label">
         <span className="field-label-text">{label}</span>
         {labelDescription && (

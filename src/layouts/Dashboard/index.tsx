@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <DashboardWrapper className="d-flex">
       <Sidebar />
-      <ContentArea className="w-100">
+      <ContentArea id="app-content" className="w-100">
         <Header />
         <MainContent>
           <Outlet />
