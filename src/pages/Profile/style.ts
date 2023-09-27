@@ -28,8 +28,9 @@ export const ProfileProgressWrapper = styled.div`
       position: absolute;
       top: 0;
       height: 100%;
-      transition: width 0.7s;
-      transition-delay: 0.2s;
+      width: 0;
+      transition: width 0.7s ease-in;
+      transition-delay: 0.1s;
       background: var(--primary-color);
     }
   }
@@ -134,6 +135,7 @@ export const Sidebar = styled.aside`
           &.active,
           &:hover {
             background: #EDE7E5;
+            color: var(--secondary-color);
 
             i {
               filter: invert(30%) sepia(80%) saturate(331%) hue-rotate(338deg) brightness(97%) contrast(86%);

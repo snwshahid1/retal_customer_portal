@@ -13,7 +13,6 @@ const Modal = forwardRef(function Modal(
 
   useEffect(() => {
     setSidebarWidth(AppSidebarWidth ? AppSidebarWidth : 0);
-    console.log("Shahid", AppSidebarWidth);
   }, [AppSidebarWidth]);
 
   return (
@@ -24,11 +23,13 @@ const Modal = forwardRef(function Modal(
         style={{ left: `calc(50% + ${sidebarWidth / 2}px)`}}
       >
         <div className="modal-content">
-          <button
-            className="close-popup"
-            aria-label="Close"
-            onClick={onClose}
-          ></button>
+          {onClose && (
+            <button
+              className="close-popup"
+              aria-label="Close"
+              onClick={onClose}
+            ></button>
+          )}
           {children}
         </div>
       </div>

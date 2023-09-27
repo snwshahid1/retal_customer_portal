@@ -23,7 +23,7 @@ export const Dialog = styled.dialog`
   border-radius: 5px;
   min-height: 100vh;
   z-index: 99999;
-  padding: 20px 25px;
+  padding: 20px 25px 0;
   border: none;
   left: auto;
   transition: transform 0.4s;

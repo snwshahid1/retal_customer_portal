@@ -6,25 +6,21 @@ const LatestProject: FC<any> = () => {
     {
       title: "Retal Contract 2023",
       iconClass: "doc-icon1",
-      link: "#",
       isNew: true,
     },
     {
       title: "Overview 2023 V2",
       iconClass: "doc-icon2",
-      link: "#",
       isNew: false,
     },
     {
       title: "Retal Contract 2022",
       iconClass: "doc-icon1",
-      link: "#",
       isNew: false,
     },
     {
       title: "Partnerships Retal",
       iconClass: "doc-icon2",
-      link: "#",
       isNew: false,
     },
   ];
@@ -39,7 +35,7 @@ const LatestProject: FC<any> = () => {
       <ul className="list-unstyled p-0 m-0">
         {Documents.map(({ title, link, iconClass, isNew }: any, i: number) => (
           <li key={i}>
-            <Link to={link}>
+            <Link to="/documents#docID">
               <span className="doc-icon-holder">
                 <i className={iconClass}></i>
               </span>

@@ -7,7 +7,7 @@ const ProfileSidebar: FC<any> = ( ) => {
   const location = useLocation();
 
   const ProfileLinks = [
-    {label: "Personal Infomations", slug: '/profile', iconClass: "user-icon"},
+    {label: "Personal information", slug: '/profile', iconClass: "user-icon"},
     {label: "Change Password", slug: '/profile/change-password', iconClass: "lock-icon"}
   ]
   return (

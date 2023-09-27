@@ -1,7 +1,7 @@
 import { FC, memo } from "react"
 import { CardItem } from "./style"
 
-const DocumentItem: FC<any> = ({ docID, title }) => {
+const DocumentItem: FC<any> = ({ docID, title, viewDocument }) => {
   
   return (
     <CardItem>
@@ -13,7 +13,7 @@ const DocumentItem: FC<any> = ({ docID, title }) => {
         </div>
       </div>
       <div className="card-item-bottom">
-        <button className="btn-inline color-primary">View document</button>
+        <button className="btn-inline color-primary" onClick={() => viewDocument()}>View document</button>
       </div>
     </CardItem>
   );

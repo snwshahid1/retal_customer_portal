@@ -1,5 +1,5 @@
 import FormField from "src/components/FormField";
-import { FC, memo, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { NewTicketWrapper } from "../style";
 import SelectField from "src/elements/Form/SelectField";
 import TextField from "src/elements/Form/TextField";
@@ -8,24 +8,49 @@ import { FileUpload } from "src/components/UploadFile/style";
 import ToggleDropdown from "src/components/ToggleDropdown";
 import CheckboxList from "src/elements/CheckboxList";
 import { useClickAway } from "@uidotdev/usehooks";
+import SlickSlider from "src/components/SlickSlider";
+import { useFormik } from "formik";
+import { validateTicket } from "../Validation";
 import UploadImage1 from "src/assets/images/upload-img1.png";
 import UploadImage2 from "src/assets/images/upload-img2.png";
 import UploadImage3 from "src/assets/images/upload-img3.png";
 import UploadImage4 from "src/assets/images/upload-img4.png";
-import SlickSlider from "src/components/SlickSlider";
 
 const NewTicket: FC<any> = ({}) => {
+  const [toggleCategories, setToggleCategories] = useState(false);
+  const [categories, setCategories] = useState<any[]>([]);
+
   const ref = useClickAway(() => {
     setToggleCategories(false);
   });
 
-  const [inputs, setInputs] = useState({
-    property: "",
-    message: "",
+  const formik = useFormik({
+    initialValues: {
+      property: "Alaya Al Nakeel",
+      categories: [],
+      message: "",
+    },
+    validationSchema: validateTicket,
+    enableReinitialize: true,
+    onSubmit: (values: any) => {
+      // api call
+      //console.log(values);
+    },
   });
 
-  const [toggleCategories, setToggleCategories] = useState(false);
-  const [categories, setCategories] = useState<any[]>([]);
+  const {
+    setFieldTouched,
+    setFieldValue,
+    values,
+    errors,
+    handleChange,
+    handleBlur,
+    isSubmitting,
+    isValid,
+    dirty,
+    touched,
+    handleSubmit,
+  }: any = formik;
 
   const handleCategoriesChange = (event: any) => {
     const isChecked = event.target.checked;
@@ -38,6 +63,10 @@ const NewTicket: FC<any> = ({}) => {
       );
     }
   };
+
+  useEffect( () => {
+    setFieldValue('categories', categories);
+  }, [categories]);
 
   const sliderSettings = {
     draggable: true,
@@ -102,13 +131,6 @@ const NewTicket: FC<any> = ({}) => {
     },
   ];
 
-  const handleChange = (event: any) => {
-    setInputs({
-      ...inputs,
-      [event.target.name]: event.target.value,
-    });
-  };
-
   return (
     <NewTicketWrapper>
       <h2>Raise new ticket</h2>
@@ -121,23 +143,23 @@ const NewTicket: FC<any> = ({}) => {
               name="property"
               id="property"
               className="textbox selectbox h-50"
+              value={values.property}
+              onChange={handleChange}
               options={[
                 { label: "Select property", value: "" },
                 { label: "Ewan Sedra", value: "Ewan Sedra" },
                 { label: "Retal Rise", value: "retal rise" },
-                {
-                  label: "Alaya Al Nakeel",
-                  value: "Alaya Al Nakeel",
-                  selected: true,
-                },
+                { label: "Alaya Al Nakeel", value: "Alaya Al Nakeel" },
               ]}
             />
           }
+          errorText={touched["property"] && errors["property"]}
         />
 
         <FormField
           className="bg-grey-field"
           label="Category"
+          labelTag="span"
           control={
             <ToggleDropdown
               ref={ref}
@@ -146,10 +168,10 @@ const NewTicket: FC<any> = ({}) => {
                   type="text"
                   name="categories"
                   className="textbox h-50 icon-end"
-                  value={categories}
-                  onClick={() => setToggleCategories(true)}
+                  value={values.categories}
+                  onClick={() => setToggleCategories(!toggleCategories)}
                   icon={<i className="sm-icon down-black-icon"></i>}
-                  readOnly
+                  readOnly={true}
                 />
               }
               visible={toggleCategories}
@@ -157,6 +179,7 @@ const NewTicket: FC<any> = ({}) => {
               <CheckboxList options={options} />
             </ToggleDropdown>
           }
+          errorText={touched["categories"] && errors["categories"]}
         />
 
         <FormField
@@ -168,10 +191,11 @@ const NewTicket: FC<any> = ({}) => {
               id="message"
               className="textbox textarea"
               placeholder="Enter message"
-              value={inputs.message}
+              value={values.message}
               onChange={handleChange}
             />
           }
+          errorText={touched["message"] && errors["message"]}
         />
 
         <FormField
@@ -209,7 +233,14 @@ const NewTicket: FC<any> = ({}) => {
       </div>
 
       <div className="new-ticket-bottom sticky-bottom">
-        <button className="theme-btn w-100 disabled-btn" disabled>
+        <button
+          className={`theme-btn w-100 ${
+            Boolean(!(isValid && dirty)) ? "disabled-btn" : ""
+          }`}
+          type="submit"
+          onClick={handleSubmit}
+          disabled={Boolean(!(isValid && dirty))}
+        >
           Send ticket
         </button>
       </div>

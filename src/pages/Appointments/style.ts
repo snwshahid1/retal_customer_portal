@@ -16,8 +16,9 @@ export const NewAppointmentWrapper = styled.div`
   }
   .new-appointment-bottom {
     padding: 25px 30px;
+    position: -webkit-sticky;
     position: sticky;
-    bottom: -20px;
+    bottom: 0;
     border-top: 1px solid var(--lightest-shade);
     background: var(--white);
     margin: 0 -25px;
@@ -38,6 +39,10 @@ export const NewAppointmentWrapper = styled.div`
     margin-bottom: 15px;
     padding: 20px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+    .error-msg {
+      grid-column: span 3;
+    }
 
     .time-slot {
       position: relative;
@@ -177,7 +182,7 @@ export const AppointmentDetailWrapper = styled.div`
     padding: 25px 0;
 
     .map-loc {
-      margin: 20px auto;
+      margin: 20px auto 5px;
 
       img,
       iframe {

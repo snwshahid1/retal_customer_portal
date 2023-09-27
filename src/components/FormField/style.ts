@@ -22,3 +22,10 @@ export const FieldHolder = styled.div`
     }
   }
 `;
+
+export const ErrorMsg = styled.span`
+  display: block;
+  font-size: 13px;
+  padding: 5px 15px 0;
+  color: red;
+`;

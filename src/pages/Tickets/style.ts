@@ -57,8 +57,9 @@ export const NewTicketWrapper = styled.div`
 
   .sticky-bottom {
     padding: 25px 30px;
+    position: -webkit-sticky;
     position: sticky;
-    bottom: -20px;
+    bottom: 0;
     border-top: 1px solid var(--lightest-shade);
     background: var(--white);
     margin: 0 -25px;
@@ -150,6 +151,10 @@ export const TicketDetailWrapper = styled.div`
       background: blue;
     }
   }
+
+  .tickets-status-block {
+    padding-bottom: 15px;
+  }
 `;
 
 export  const TicketStatusBox = styled.div`
@@ -215,10 +220,11 @@ export const ReportProblemWrapper = styled.div`
 
   .report-ticket-bottom {
     padding: 25px 30px;
+    position: -webkit-sticky;
     position: sticky;
-    bottom: -20px;
+    bottom: 0;
     border-top: 1px solid var(--lightest-shade);
     background: var(--white);
-    margin: auto -25px -20px;
+    margin: auto -25px 0;
   }
 `;

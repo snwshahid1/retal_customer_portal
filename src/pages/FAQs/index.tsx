@@ -21,7 +21,7 @@ const FAQs = () => {
         content: "Suspendisse a ultricies. Suspendisse potenti. In pretium et turpis non bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id risus sit amet dui susci cursus. Cras vitae ipsum leo. Suspendisse venenatis dapibus pellentesque."
     },
     {
-        header: "My personal informations",
+        header: "My personal information",
         content: "Consectetur adipiscing elit. Donec id risus sit amet dui susci cursus. Cras vitae ipsum leo. Suspendisse venenatis dapibus pellentesque. Suspendisse a ultricies. Suspendisse potenti. In pretium et turpis non bibendum. consectetur adipiscing elit. Donec id risus sit amet dui susci cursus. Cras vitae ipsum leo. Suspendisse venenatis dapibus pellentesque. Suspendisse a ultricies. Suspendisse potenti. In pretium et turpis non bibendum"
     },
     {

@@ -83,7 +83,12 @@ export const PropertiesDetailsHolder = styled.div`
     }
 
     .property-name-loc {
-      width: 40%;
+      width: 100%;
+
+      @media ${DeviceUp.sm} {
+        width: 40%;
+        padding-right: 20px;
+      }
 
       h3 {
         font-size: 20px;
@@ -102,8 +107,12 @@ export const PropertiesDetailsHolder = styled.div`
     }
 
     .propery-info-carousel-wrapper {
-      width: 60%;
       padding: 0 15px;
+      width: 100%;
+
+      @media ${DeviceUp.sm} {
+        width: 60%;
+      }
 
       .propery-info-carousel {
         li {

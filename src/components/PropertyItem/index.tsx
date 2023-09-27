@@ -14,7 +14,7 @@ const PropertyItem: FC<any> = (
       <div className="property-detail">
         <div className="property-detail-top">
           <div className="property-title">
-            <h3>{title}</h3>
+            <h3><Link to={route}>{title}</Link></h3>
             <p><i className="sm-icon map-marker-icon"></i> {location}</p>
           </div>
           <div

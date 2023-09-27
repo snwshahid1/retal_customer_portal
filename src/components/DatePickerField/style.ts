@@ -35,6 +35,28 @@ export const DateField = styled.div`
     display: block;
   }
 
+  .react-datepicker__day--keyboard-selected, 
+  .react-datepicker__month-text--keyboard-selected, 
+  .react-datepicker__quarter-text--keyboard-selected, 
+  .react-datepicker__year-text--keyboard-selected {
+    background: rgba(133, 85, 58, 0.25);
+  }
+
+  .react-datepicker__day--selected, 
+  .react-datepicker__day--in-selecting-range, 
+  .react-datepicker__day--in-range, 
+  .react-datepicker__month-text--selected, 
+  .react-datepicker__month-text--in-selecting-range, 
+  .react-datepicker__month-text--in-range, 
+  .react-datepicker__quarter-text--selected, 
+  .react-datepicker__quarter-text--in-selecting-range, 
+  .react-datepicker__quarter-text--in-range, 
+  .react-datepicker__year-text--selected, 
+  .react-datepicker__year-text--in-selecting-range, 
+  .react-datepicker__year-text--in-range {
+    background: var(--primary-color);
+  }
+
   & input {
     height: 40px;
     padding: 5px 32px;

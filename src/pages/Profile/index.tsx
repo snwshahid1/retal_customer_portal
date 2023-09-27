@@ -1,39 +1,71 @@
-import PageTitle from "src/components/PageTitle"
+import PageTitle from "src/components/PageTitle";
 import ProfileProgress from "./components/ProfileProgress";
 import { ProfileDetails } from "./style";
 import ProfileSidebar from "./components/ProfileSidebar";
 import FormField from "src/components/FormField";
 import TextField from "src/elements/Form/TextField";
-import { useState } from "react";
-
+import { useFormik } from "formik";
+import { validateProfile } from "./Validation";
 
 const MyProfile = () => {
-  const [inputs, setInputs] = useState({
-    firstName: 'Saleh',
-    lastName: 'Abdullah',
-    phone: '+966 50 680 3006',
-    email: 'a.alsaleh@retal.com.sa'
+  const formik = useFormik({
+    initialValues: {
+      firstName: "Saleh",
+      lastName: "Abdullah",
+      phoneNumber: "+ 966 50 680 3006",
+      emailAddress: "a.alsaleh@retal.com.sa",
+    },
+    validationSchema: validateProfile,
+    enableReinitialize: true,
+    onSubmit: (values: any) => {
+      // api call
+      //console.log(values);
+    },
   });
 
-  const handleChange = (event: any) => {
-    setInputs({
-      ...inputs, 
-      [event.target.name]: event.target.value
-    })
-  }
+  const {
+    setFieldTouched,
+    setFieldValue,
+    values,
+    errors,
+    handleChange,
+    handleBlur,
+    isSubmitting,
+    isValid,
+    dirty,
+    touched,
+    handleSubmit,
+  }: any = formik;
 
-  return(
+  return (
     <>
       <div className="page-title-holder flex-base-wrapper">
-        <PageTitle title="My Profile" subtitle="Find here all of your informations" />
+        <PageTitle
+          title="My Profile"
+          subtitle="Find here all of your information"
+        />
       </div>
-      <ProfileProgress title="Complete your profile" subtitle="Please comlete your informations" progress={50} />
+      <ProfileProgress
+        title="Complete your profile"
+        subtitle="Please comlete your information"
+        progress={50}
+      />
       <ProfileDetails>
         <ProfileSidebar />
         <div className="detail-content">
           <div className="page-title-holder flex-base-wrapper">
-            <PageTitle title="Personal Informations" subtitle="You can edit your personal information here" />
-            <button className="theme-btn min-130">Save</button>
+            <PageTitle
+              title="Personal information"
+              subtitle="You can edit your personal information here"
+            />
+            <button
+              className="theme-btn min-130"
+              type="submit"
+              onClick={handleSubmit}
+              //disabled={Boolean(!(isValid && dirty) || isSubmitting)}
+            >
+              Save
+            </button>
           </div>
 
           <div className="form-wrapper">
@@ -45,10 +77,11 @@ const MyProfile = () => {
                   name="firstName"
                   id="firstName"
                   placeholder="First Name"
-                  value={inputs.firstName}
-                  onChange={(event: any) => handleChange(event)}
+                  value={values.firstName}
+                  onChange={handleChange}
                 />
               }
+              errorText={touched["firstName"] && errors["firstName"]}
             />
 
             <FormField
@@ -59,10 +92,11 @@ const MyProfile = () => {
                   name="lastName"
                   id="lastName"
                   placeholder="Last Name"
-                  value={inputs.lastName}
-                  onChange={(event: any) => handleChange(event)}
+                  value={values.lastName}
+                  onChange={handleChange}
                 />
               }
+              errorText={touched["lastName"] && errors["lastName"]}
             />
 
             <FormField
@@ -70,15 +104,20 @@ const MyProfile = () => {
               control={
                 <TextField
                   className="textbox icon-right-long"
-                  name="phone"
-                  id="phone"
+                  name="phoneNumber"
+                  id="phoneNumber"
                   placeholder="Phone"
-                  value={inputs.phone}
-                  icon={<span className="color-primary">Confirmed <i className="sm-icon verified-icon"></i></span>}
-                  iconClassName='icon-end'
-                  onChange={(event: any) => handleChange(event)}
+                  value={values.phoneNumber}
+                  onChange={handleChange}
+                  icon={
+                    <span className="color-primary">
+                      Confirmed <i className="sm-icon verified-icon"></i>
+                    </span>
+                  }
+                  iconClassName="icon-end"
                 />
               }
+              errorText={touched["phoneNumber"] && errors["phoneNumber"]}
             />
 
             <FormField
@@ -86,21 +125,26 @@ const MyProfile = () => {
               control={
                 <TextField
                   className="textbox"
-                  name="email"
-                  id="email"
+                  name="emailAddress"
+                  id="emailAddress"
                   placeholder="Email"
-                  value={inputs.email}
-                  onChange={(event: any) => handleChange(event)}
-                  icon={<span className="color-primary">Confirmed <i className="sm-icon verified-icon"></i></span>}
-                  iconClassName='icon-end'
+                  value={values.emailAddress}
+                  onChange={handleChange}
+                  icon={
+                    <span className="color-primary">
+                      Confirmed <i className="sm-icon verified-icon"></i>
+                    </span>
+                  }
+                  iconClassName="icon-end"
                 />
               }
+              errorText={touched["emailAddress"] && errors["emailAddress"]}
             />
           </div>
         </div>
       </ProfileDetails>
     </>
-  )
-}
+  );
+};
 
-export default MyProfile
+export default MyProfile;

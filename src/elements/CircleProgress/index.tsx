@@ -18,7 +18,7 @@ const CircleProgress: FC<any> = ({ percentage, color }: any) => {
         className={className}
         r={r}
         cx={92}
-        cy={67}
+        cy={65}
         fill="transparent"
         stroke={strokePct !== circ ? color : ""} // remove color as 0% sets full circumference
         strokeWidth={"7px"}
