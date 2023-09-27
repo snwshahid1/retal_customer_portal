@@ -11,7 +11,7 @@ import ToggleDropdown from "src/components/ToggleDropdown";
 import { Link } from "react-router-dom";
 import { useClickAway } from "@uidotdev/usehooks";
 
-const TicketDetail: FC<any> = ({ showReportProblem }) => {
+const TicketDetail: FC<any> = ({ showReportProblem, showCancelTicket }) => {
   const [viewMore, setViewMore] = useState(true);
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -100,7 +100,7 @@ const TicketDetail: FC<any> = ({ showReportProblem }) => {
           </li>
 
           <li>
-            <Link to="/profile">
+            <Link to="#" onClick={() => showCancelTicket()}>
               <i className="cancel-icon"></i>
               <span>Cancel ticket</span>
             </Link>

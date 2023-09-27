@@ -417,6 +417,10 @@ export const DashboardHolder = styled.div`
         min-height: 35px;
         margin-top: auto;
 
+        &:hover {
+          background: rgba(18, 18, 18, 0.8);
+        }
+
         i {
           position: absolute;
           left: 5px;
@@ -530,6 +534,10 @@ export const DashboardHolder = styled.div`
     text-decoration: underline;
     opacity: 0.6;
     color: var(--dark-grey);
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .marketplace-slider {
@@ -568,8 +576,10 @@ export const DashboardHolder = styled.div`
   }
 
   .latest-projects {
-    width: 230px;
-    flex-grow: unset;
+    @media ${DeviceUp.sm} {
+      width: 230px;
+      flex-grow: unset;
+    }
   }
 
   .box-shadow-inset {
@@ -612,7 +622,11 @@ export const LatestProjectHolder = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 240px;
+    min-height: 280px;
+
+    @media ${DeviceUp.sm} {
+      min-height: 240px;
+    }
 
     .slide-img {
       position: absolute;
@@ -753,5 +767,9 @@ export const RateTeam = styled.div`
     padding: 20px !important;
     border-color: #FAFAFA !important;
     background: #FAFAFA !important;
+  }
+
+  .form-area {
+    padding-bottom: 20px;
   }
 `;

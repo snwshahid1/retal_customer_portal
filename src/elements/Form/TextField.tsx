@@ -11,9 +11,10 @@ const TextField: FC<any> = ({
   placeholder,
   value,
   maxlength,
+  onBlue,
   onChange,
   onClick,
-  props,
+  ...props
 }) => {
   const TextField = (
     <TextBox
@@ -22,6 +23,7 @@ const TextField: FC<any> = ({
       name={name}
       id={id}
       placeholder={placeholder}
+      onBlur={onBlue}
       onChange={onChange}
       onClick={onClick}
       value={value}

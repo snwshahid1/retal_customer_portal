@@ -70,6 +70,10 @@ export const Property = styled.div`
       a {
         font-weight: 500;
         color: var(--primary-color);
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

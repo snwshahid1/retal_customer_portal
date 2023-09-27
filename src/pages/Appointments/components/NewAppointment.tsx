@@ -1,35 +1,62 @@
 import FormField from "src/components/FormField";
-import { FC, memo, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { NewAppointmentWrapper } from "../style";
 import SelectField from "src/elements/Form/SelectField";
 import TextField from "src/elements/Form/TextField";
 import TextAreaField from "src/elements/Form/TextAreaField";
 import DatePickerInline from "src/components/DatePickerInline";
 import { addMonths, addDays, format } from 'date-fns';
-
+import { useFormik } from "formik";
+import { validateAppointment } from "../Validation";
+import { ErrorMsg } from "src/components/FormField/style";
 
 const NewAppointment: FC<any> = ({}) => {
-  const [inputs, setInputs] = useState({
-    title: "",
-    subject: "Handover",
-    property: "",
-    date: "",
-    message: "",
+  const [startDate, setStartDate] = useState('');
+  const [appTime, setappTime] = useState('');
+
+  const formik = useFormik({
+    initialValues: {
+      property: "",
+      title: "",
+      subject: "Handover",
+      date: "",
+      time: "",
+      message: "",
+    },
+    validationSchema: validateAppointment,
+    enableReinitialize: true,
+    onSubmit: (values: any) => {
+      // api call
+      //console.log(values);
+    },
   });
 
-  const [startDate, setStartDate] = useState('');
-
-  const handleChange = (event: any) => {
-    setInputs({
-      ...inputs,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const {
+    setFieldValue,
+    values,
+    errors,
+    handleChange,
+    touched,
+    handleSubmit,
+  }: any = formik;
 
   const onDateChange = (date: any) => {
     const selectedDate = format(date, 'MMMM dd, yyyy');
     setStartDate(selectedDate);
   };
+
+  const handleTimeChange = (event: any) => {
+    const value = event.target.value;
+    setappTime(value);
+  }
+
+  useEffect( () => {
+    setFieldValue('date', startDate);
+  }, [startDate]);
+
+  useEffect( () => {
+    setFieldValue('time', appTime);
+  }, [appTime]);
 
   const TimeSlots = [
     "09:00-09:45",
@@ -58,14 +85,17 @@ const NewAppointment: FC<any> = ({}) => {
               name="property"
               id="property"
               className="textbox selectbox h-50"
+              value={values.property}
+              onChange={handleChange}
               options={[
                 { label: "Select property", value: "" },
-                { label: "Ewan Sedra", value: "Ewan Sedra", selected: true },
+                { label: "Ewan Sedra", value: "Ewan Sedra" },
                 { label: "Retal Rise", value: "retal rise" },
                 { label: "Alaya Al Nakeel", value: "Alaya Al Nakeel" },
               ]}
             />
           }
+          errorText={touched["property"] && errors["property"]}
         />
 
         <FormField
@@ -77,10 +107,11 @@ const NewAppointment: FC<any> = ({}) => {
               id="title"
               className="textbox h-50"
               placeholder="Enter title"
-              value={inputs.title}
+              value={values.title}
               onChange={handleChange}
             />
           }
+          errorText={touched["title"] && errors["title"]}
         />
 
         <FormField
@@ -92,10 +123,11 @@ const NewAppointment: FC<any> = ({}) => {
               id="subject"
               className="textbox h-50"
               placeholder="Enter subject"
-              value={inputs.subject}
+              value={values.subject}
               onChange={handleChange}
             />
           }
+          errorText={touched["subject"] && errors["subject"]}
         />
 
         <FormField
@@ -107,10 +139,13 @@ const NewAppointment: FC<any> = ({}) => {
               id="date"
               className="textbox h-50 icon-end"
               placeholder="Select Date"
-              value={startDate}
+              value={values.date}
+              onChange={handleChange}
               icon={<i className="calendar-icon3"></i>}
+              readOnly={true}
             />
           }
+          errorText={touched["date"] && errors["date"]}
         />
 
         <div className="bg-grey-field px-15">
@@ -120,7 +155,6 @@ const NewAppointment: FC<any> = ({}) => {
             maxDate={addMonths(new Date(), 12)}
             highlightDates={[addDays(new Date(), 2), addDays(new Date(), 7)]}
             showMonthYearDropdown
-
           />
         </div>
 
@@ -128,10 +162,19 @@ const NewAppointment: FC<any> = ({}) => {
           <div className="d-grid time-slots-wrapper">
             {TimeSlots.map((timeSlot, i) => (
               <div className="time-slot" key={i}>
-                <input type="radio" name="time-slot" id={`timeSlot${i}`} />
+                <input 
+                  type="radio" 
+                  name="time-slot" 
+                  id={`timeSlot${i}`}
+                  value={timeSlot}
+                  onClick={(event) => handleTimeChange(event)}
+                />
                 <label htmlFor={`timeSlot${i}`}>{timeSlot}</label>
               </div>
             ))}
+            <ErrorMsg className="error-msg">
+              {touched["time"] && errors["time"]}
+            </ErrorMsg>
           </div>
         </div>
 
@@ -144,15 +187,22 @@ const NewAppointment: FC<any> = ({}) => {
               id="message"
               className="textbox textarea"
               placeholder="Enter message"
-              value={inputs.message}
+              value={values.message}
               onChange={handleChange}
             />
           }
+          errorText={touched["message"] && errors["message"]}
         />
       </div>
 
       <div className="new-appointment-bottom">
-        <button className="theme-btn w-100">Create new appointment</button>
+        <button 
+          className="theme-btn w-100"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Create new appointment
+        </button>
       </div>
     </NewAppointmentWrapper>
   );

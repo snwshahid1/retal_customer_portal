@@ -1,4 +1,4 @@
-import { DeviceDown } from "src/styles/breakpoints";
+import { DeviceDown, DeviceUp } from "src/styles/breakpoints";
 import styled from "styled-components";
 
 export const ResponsiveModal = styled.div`
@@ -6,7 +6,7 @@ export const ResponsiveModal = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 99999;
+  z-index: 998;
   background: rgba(0, 0, 0, 0.4);
   top: 0;
   left: 0;
@@ -29,7 +29,6 @@ export const ResponsiveModal = styled.div`
   .popup-modal-inner {
     background: var(--white);
     position: fixed;
-    max-width: 620px;
     width: 90%;
     max-height: 90%;
     top: 50%;
@@ -49,6 +48,22 @@ export const ResponsiveModal = styled.div`
 
     &.modal-sm {
       max-width: 420px;
+    }
+
+    &.modal-lg {
+      @media ${DeviceUp.md} {
+        max-width: 800px;
+      }
+    }
+
+    &.modal-xl {
+      @media ${DeviceUp.md} {
+        max-width: calc(100% - 300px);
+      }
+    }
+
+    &.border-radius-10 {
+      border-radius: 10px;
     }
 
     .modal-content {

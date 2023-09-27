@@ -1,21 +1,26 @@
 import { FC, memo } from "react";
-import { FieldHolder } from "./style";
+import { FieldHolder, ErrorMsg } from "./style";
 
 const FormField: FC<any> = ({
   label,
   labelDescription,
+  labelTag,
   control,
   className,
+  errorText
 }) => {
+  const LabelTag = labelTag ? labelTag : 'label';
+
   return (
     <FieldHolder className={`form-field ${className ? className : ''}`}>
-      <label className="field-label">
+      <LabelTag className="field-label">
         <span className="field-label-text">{label}</span>
         {labelDescription && (
           <span className="label-description">{labelDescription}</span>
         )}
         {control}
-      </label>
+      </LabelTag>
+      {errorText && <ErrorMsg className="error-message">{errorText}</ErrorMsg>}
     </FieldHolder>
   );
 };

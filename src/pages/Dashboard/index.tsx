@@ -14,7 +14,6 @@ import SidebarDialog from "src/components/SidebarDialog";
 import RateSalesTeam from "./components/RateSalesTeam";
 import CircleProgress from "src/elements/CircleProgress";
 import GalleryImg1 from "src/assets/images/dashboard-gallery-img.png";
-import GalleryImg2 from "src/assets/images/news-img1.png";
 
 const Dashboard = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
@@ -25,7 +24,7 @@ const Dashboard = () => {
 
   const gallerySliderSettings = {
     draggable: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -87,7 +86,7 @@ const Dashboard = () => {
               </div>
 
               <div className="property-infos">
-                <h5>Informations</h5>
+                <h5>information</h5>
                 <div className="property-info-boxes d-grid gap-5">
                   <div className="info-box">
                     <span>Villa area</span>
@@ -117,7 +116,7 @@ const Dashboard = () => {
               <div className="progress-wrapper">
                 <h5>Progression</h5>
                 <div className="progress-wrapper-inner flex-wrap d-flex gap-20">
-                  <div className="progress-left flex-grow">
+                  <div className="progress-left">
                     <ul className="progress-steps list-unstyled m-0 p-0">
                       <li>
                         <span>Step 01</span>
@@ -186,7 +185,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="img-slide">
-                  <img src={GalleryImg2} alt="" />
+                  <img src="https://dummyimage.com/820x750/000/fff" alt="" />
                 </div>
               </SlickSlider>
             </div>

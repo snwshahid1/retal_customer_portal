@@ -165,13 +165,13 @@ export const HamburgerButton = styled.button`
   position: absolute;
   top: 10px;
   left: 10px;
-  z-index: 99999;
 
   @media ${DeviceUp.sm} {
     left: 20px;
   }
 
   &.open {
+    top: 5px;
     left: 225px;
     transition-delay: 0.35s;
     position: fixed;

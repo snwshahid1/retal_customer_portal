@@ -34,8 +34,8 @@ option:focus {
 	box-sizing:border-box;
 }
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   background-color: transparent;
 }
 ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
@@ -84,6 +84,9 @@ a:focus, a:active, a:hover, a {
 a {
   display: inline-block;
   color: var(--secondary-color);
+}
+a:hover {
+  color: var(--primary-color);
 }
 
 body {
@@ -474,6 +477,9 @@ p { margin:0 0 10px; }
 .text-uppercase {
   text-transform: uppercase;
 }
+.pb-0 {
+  padding-bottom: 0 !important;
+}
 .pb-1 {
   padding-bottom: 5px;
 }
@@ -547,7 +553,7 @@ p { margin:0 0 10px; }
 }
 
 .hamburger-menu-btn {
-  z-index: 999;
+  z-index: 997;
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -563,6 +569,7 @@ p { margin:0 0 10px; }
   background: var(--primary-color);
   display: block;
   position: relative;
+  min-width: 20px;
   width: 20px;
   height: 2px;
   border-radius: 4px;
@@ -586,6 +593,7 @@ p { margin:0 0 10px; }
 }
 .hamburger-menu-btn.open {
   background: var(--secondary-color);
+  z-index: 1000;
 }
 .hamburger-menu-btn.open span::after {
   opacity: 0;
@@ -792,5 +800,16 @@ input::placeholder {
 @media only screen and (min-width: 767px) {
   .white-text-box {
     padding: 25px;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  .px-40 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .px-25 {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }

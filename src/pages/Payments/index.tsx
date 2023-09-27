@@ -31,7 +31,7 @@ const Payments = () => {
 
   const navbarLinks = [
     { label: "Incoming", slug: "/payments" },
-    { label: "Paid", slug: "/payments/paid" },
+    { label: "Paid", slug: "" },
   ];
 
   const columns = [
@@ -269,7 +269,7 @@ const Payments = () => {
 
           <Navbar navbarLinks={navbarLinks} />
         </FilterHolder>
-        <div className="mb-20">
+        <div className="mb-20 flex-grow">
           <Searchbar placeholder="Search a payment" />
         </div>
       </div>

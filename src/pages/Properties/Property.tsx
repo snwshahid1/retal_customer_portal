@@ -23,7 +23,15 @@ const Property = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+        }
+      }
+    ]
   };
 
   const QuickAccessLinks = [
@@ -31,13 +39,13 @@ const Property = () => {
       iconClass: "qc-ticket-icon",
       boxClass: "qc-border-1",
       text: "Raise Ticket",
-      route: "/ticket"
+      route: "/create-ticket#new-ticket"
     },
     {
       iconClass: "qc-calendar-icon",
       boxClass: "qc-border-2",
       text: "Appointment",
-      route: "/appointment"
+      route: "/request-appointment"
     },
     {
       iconClass: "qc-document-icon",
@@ -187,7 +195,7 @@ const Property = () => {
 
           <div className="property-details">
             <div className="property-widget">
-              <h5>Property informations</h5>
+              <h5>Property information</h5>
               <ul className="list-style-none p-0 m-0 property-info-list">
                 <li>
                   <span>Status</span>

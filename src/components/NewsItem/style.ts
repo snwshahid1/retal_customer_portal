@@ -1,3 +1,4 @@
+import { DeviceUp } from "src/styles/breakpoints";
 import styled from "styled-components";
 
 export const NewsItem = styled.div`
@@ -31,8 +32,13 @@ export const NewsItem = styled.div`
 
     h5 {
       color: var(--white);
-      font-size: 15px;
-      line-height: 24px;
+      font-size: 13px;
+      line-height: normal;
+
+      @media ${DeviceUp.sm} {
+        font-size: 15px;
+        line-height: 24px;
+      }
     }
 
     .news-date {

@@ -12,7 +12,7 @@ const ToggleDropdown = forwardRef(function ToggleDropdown(
       <DropDown
         role="menu"
         className={classNames(
-          `toggle-menu-dropdown ${className && className}`,
+          `toggle-menu-dropdown ${className ? className : ''}`,
           { visible: visible }
         )}
       >

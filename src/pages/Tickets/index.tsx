@@ -11,14 +11,26 @@ import Navbar from "src/components/Navbar";
 import { FilterHolder } from "src/styles/commonStyle";
 import SelectField from "src/elements/Form/SelectField";
 import DatePickerField from "src/components/DatePickerField";
+import Modal from "src/components/Modal";
+import { useClickAway } from "@uidotdev/usehooks";
+import { useLocation } from "react-router-dom";
 
 const Tickets = () => {
-  const [isOpenDialog, setIsOpenDialog] = useState(false);
-  const [newTicket, setNewTicket] = useState(false);
+  const location = useLocation();
+  const isOpenNewTicket = location.hash === "#new-ticket" ? true : false;
+
+  const [isOpenDialog, setIsOpenDialog] = useState(isOpenNewTicket);
+  const [newTicket, setNewTicket] = useState(isOpenNewTicket);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [ticketDetail, setTicketDetail] = useState(false);
   const [reportProblem, setReportProblem] = useState(false);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [isCancelTicket, setIsCancelTicket] = useState(false);
+
+  const ref = useClickAway(() => {
+    setIsOpenModal(false);
+  });
 
   const onDateChange = (dates: any) => {
     const [start, end] = dates;
@@ -26,12 +38,20 @@ const Tickets = () => {
     setEndDate(end);
   };
 
+  const closeModal = () => {
+    setIsCancelTicket(false);
+    setIsOpenModal(false);
+  };
+
   const navbarLinks = [
     { label: "Open", slug: "/create-ticket" },
     { label: "Closed", slug: "" },
   ];
 
-  const handleCloseDialog = () => setIsOpenDialog(false);
+  const handleCloseDialog = () => {
+    location.hash = "";
+    setIsOpenDialog(false);
+  };
 
   const openNewTicket = () => {
     setReportProblem(false);
@@ -45,14 +65,20 @@ const Tickets = () => {
     setNewTicket(false);
     setIsOpenDialog(true);
     setTicketDetail(true);
-  }
+  };
 
   const handleReportProblem = () => {
     setNewTicket(false);
     setTicketDetail(false);
     setIsOpenDialog(true);
     setReportProblem(true);
-  }
+  };
+
+  const handleTicketCancel = () => {
+    setIsOpenDialog(false);
+    setIsCancelTicket(true);
+    setIsOpenModal(true);
+  };
 
   const columns = [
     {
@@ -142,8 +168,13 @@ const Tickets = () => {
         handleClose={handleCloseDialog}
       >
         {newTicket && <NewTicket />}
-        {ticketDetail && <TicketDetail showReportProblem={handleReportProblem} /> }
-        {reportProblem && <ReportProblem /> }
+        {ticketDetail && (
+          <TicketDetail
+            showCancelTicket={handleTicketCancel}
+            showReportProblem={handleReportProblem}
+          />
+        )}
+        {reportProblem && <ReportProblem />}
       </SidebarDialog>
 
       <div className="page-title-holder flex-base-wrapper">
@@ -199,12 +230,31 @@ const Tickets = () => {
       </div>
 
       <div className="tickets-table-data">
-        <TableData 
-          columns={columns} 
-          data={data}
-          highlightOnHover= {true}
-        />
+        <TableData columns={columns} data={data} />
       </div>
+
+      {isCancelTicket && (
+        <Modal
+          onClose={closeModal}
+          open={isOpenModal}
+          className="modal-sm"
+          ref={ref}
+        >
+          <div className="px-25 text-center mb-2 pb-1">
+            <i className="cancel-icon2 mb-1"></i>
+            <h2>Are you sure you want to cancel this ticket ?</h2>
+            <p>By clicking yes, we will cancel the ticket</p>
+          </div>
+
+          <button className="theme-btn btn-lg w-100 mb-2 no-shadow">Yes</button>
+          <button
+            onClick={() => closeModal()}
+            className="theme-btn theme-btn-border btn-lg w-100"
+          >
+            Cancel
+          </button>
+        </Modal>
+      )}
     </TicketsWrapper>
   );
 };

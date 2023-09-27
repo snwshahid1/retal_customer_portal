@@ -1,12 +1,12 @@
 import { FC, memo } from "react";
 import { SelectBox, SelectWrap } from "./style";
 
-const SelectField: FC<any> = ({ options, className, name, id, onChange }) => {
+const SelectField: FC<any> = ({ options, value, className, name, id, onChange }) => {
   return (
     <SelectWrap>
-      <SelectBox className={className} name={name} id={id} onChange={onChange}>
-        {options.map(({ label, value, selected }: any, i: number) => (
-          <option value={value} key={i} selected={selected}>
+      <SelectBox className={className} name={name} id={id} onChange={onChange} value={value}>
+        {options.map(({ label, value }: any, i: number) => (
+          <option key={i} value={value}>
             {label}
           </option>
         ))}

@@ -38,7 +38,7 @@ const SignIn = () => {
 
           <div className="text-block">
             <h1>Hello</h1>
-            <p>Please enter your informations to connect to your account.</p>
+            <p>Please enter your information to connect to your account.</p>
 
             <FormField
               label="Your email or phone number"

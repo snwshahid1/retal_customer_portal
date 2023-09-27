@@ -29,6 +29,10 @@ export const NotificationWrapper = styled.div`
     display: flex;
     align-items: flex-start;
 
+    &:hover {
+      color: var(--secondary-color);
+    }
+
     .notification-text {
       flex-grow: 1;
       position: relative;
