@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 export const HomeWrapper = styled.div`
   display: flex;
-  height: 100%;
   position: relative;
   padding: 15px 10px 0;
+  flex-direction: column;
+  flex-grow: 1;
 
   @media ${DeviceUp.md} {
     padding: 25px 40px 0;
@@ -48,7 +49,6 @@ export const HomeWrapper = styled.div`
     flex-direction: column;
     flex-grow: 1;
     margin: auto;
-    height: 100%;
     color: var(--white);
 
     h1 {

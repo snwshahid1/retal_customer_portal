@@ -66,7 +66,6 @@ export const SignInWrapper = styled.div`
     flex-direction: column;
     flex-grow: 1;
     margin: auto;
-    height: 100%;
     width: 100%;
     padding: 15px 15px 0;
 
@@ -127,16 +126,25 @@ export const SignInWrapper = styled.div`
 
   .code-fields {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     gap: 10px;
     padding: 25px 0;
 
+    @media ${DeviceUp.md} {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+
     .code-input {
-      width: 80px;
-      height: 80px;
+      width: 65px;
+      height: 65px;
       font-size: 45px;
       text-align: center;
       margin: auto;
+
+      @media ${DeviceUp.md} {
+        width: 80px;
+        height: 80px;
+      }
 
       &:hover, 
       &:focus {

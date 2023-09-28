@@ -10,7 +10,7 @@ const Home = () => {
       <div className="full-page-img">
         <img src={RetalHome} alt="Retal Home" />
       </div>
-      <div className="content-wrapper">
+      <div className="content-wrapper w-100">
         <div className="top-header">
           <div className="logo">
             <img src={LogoRetal} alt="Retal" />
