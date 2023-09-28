@@ -27,7 +27,7 @@ const VerifyNumber = () => {
         </div>
       </div>
 
-      <div className="half-screen bg-gray">
+      <div className="text-area-screen half-screen bg-gray">
         <div className="content-area">
           <div className="switch-lang dark-color text-end">
             <Link to="#">
@@ -69,27 +69,25 @@ const VerifyNumber = () => {
               />
             </div>
 
-            <div className="text-center">
-              <button
-                onClick={() => {}}
-                className="btn-inline mt-20 mb-3"
-              >
-                Send a new code
-              </button>
+            <button
+              onClick={() => {}}
+              className="btn-inline mt-20 mb-3"
+            >
+              Send a new code
+            </button>
 
-              <button
-                onClick={() => {navigate('/dashboard')}}
-                className="theme-btn btn-primary btn-lg w-100"
-              >
-                Validate
-              </button>
-            </div>
+            <button
+              onClick={() => {navigate('/dashboard')}}
+              className="theme-btn btn-primary btn-lg w-100"
+            >
+              Validate
+            </button>
           </div>
 
           <div className="bottom-text text-center">
             <p>
               Having trouble logging into your account?
-              <strong>Please contact the <Link to="#">Help Center</Link> </strong>
+              <strong>Please contact the <Link to="/faqs">Help Center</Link> </strong>
             </p> 
           </div>
         </div>

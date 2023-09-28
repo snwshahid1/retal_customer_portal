@@ -1,7 +1,14 @@
+import { DeviceDown } from "src/styles/breakpoints";
 import styled from "styled-components";
 
 
 export const PageTitleHolder = styled.div`
+
+  @media ${DeviceDown.xs} {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
   h3 {
     font-size: 22px;
     margin-bottom: 5px

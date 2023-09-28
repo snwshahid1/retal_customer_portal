@@ -58,6 +58,10 @@ export const NewsItem = styled.div`
       background: var(--primary-color);
       font-size: 13px;
       font-weight: 500;
+
+      &:hover {
+        background: var(--secondary-color);
+      }
     }
   }
 `;

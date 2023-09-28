@@ -1,4 +1,4 @@
-import { DeviceUp } from "src/styles/breakpoints";
+import { DeviceDown, DeviceUp } from "src/styles/breakpoints";
 import styled from "styled-components";
 
 export const HomeWrapper = styled.div`
@@ -74,6 +74,20 @@ export const HomeWrapper = styled.div`
       margin: auto;
       text-align: center;
       padding: 30px 0 0;
+
+      @media ${DeviceDown.sm} {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        h1 {
+          margin-top: auto;
+        }
+
+        .theme-btn {
+          margin-top: auto !important;
+        }
+      }
 
       p {
         color: rgba(255, 255, 255, 0.75);

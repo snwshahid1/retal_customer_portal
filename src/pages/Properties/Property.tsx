@@ -125,7 +125,7 @@ const Property = () => {
             </Link>
         </div>
 
-        <div className="flex-base-wrapper align-items-start gap-20">
+        <div className="flex-base-wrapper align-items-stretch gap-20">
           <div className="property-info">
             <div className="white-text-box mb-3">
               <div className="d-flex justify-content-between flex-wrap">

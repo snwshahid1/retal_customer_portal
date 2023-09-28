@@ -71,6 +71,9 @@ export const FilterHolder = styled.div`
 
   select,
   input {
+    cursor: pointer !important;
+    font-size: 16px;
+
     @media ${DeviceUp.md} {
       font-size: 14px;
     }

@@ -226,6 +226,9 @@ p { margin:0 0 10px; }
 .align-items-end {
   align-items: flex-end;
 }
+.align-items-stretch {
+  align-items: stretch !important;
+}
 .d-inline-flex {
   display: inline-flex;
 }
