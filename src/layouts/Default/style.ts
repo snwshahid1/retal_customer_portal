@@ -3,7 +3,7 @@ import { DeviceUp } from 'src/styles/breakpoints';
 
 
 export const PageWrapper = styled.div`
-  min-height: 100vh;
+  min-height: 100%;
 
   @media ${DeviceUp.lg} {
     
