@@ -716,7 +716,7 @@ export const LatestNewsHolder = styled.div`
 export const RateTeam = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex-grow: 1;
 
   .rate-btns {
     .theme-btn {

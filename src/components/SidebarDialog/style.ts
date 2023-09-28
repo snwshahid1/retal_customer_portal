@@ -21,16 +21,15 @@ export const Dialog = styled.dialog`
   right: 0;
   top: 0;
   border-radius: 5px;
-  min-height: 100vh;
   z-index: 99999;
-  padding: 20px 25px 0;
+  padding: 25px 25px 0;
   border: none;
   left: auto;
   transition: transform 0.4s;
   transform: translateX(110%);
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100vh;
+  height: 100%;
   box-shadow: 0 3px 25px rgba(15, 28, 82, 0.15);
 
   @media ${DeviceUp.sm} {

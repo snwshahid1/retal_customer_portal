@@ -13,6 +13,11 @@ export const NavbarList = styled.ul`
     a {
       display: inline-block;
       padding: 5px 15px;
+
+      &:hover {
+        background: var(--secondary-color);
+        color: var(--white);
+      }
     }
 
     &.selected-item {

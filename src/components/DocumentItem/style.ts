@@ -31,5 +31,11 @@ export const CardItem = styled.div`
     border-top: 1px solid var(--lightest-shade);
     padding: 10px 0 0;
     margin: 14px 0 0;
+
+    .btn-inline {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 `;

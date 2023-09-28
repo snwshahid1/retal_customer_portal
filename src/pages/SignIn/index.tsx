@@ -28,7 +28,7 @@ const SignIn = () => {
         </div>
       </div>
 
-      <div className="half-screen bg-gray">
+      <div className="text-area-screen half-screen bg-gray">
         <div className="content-area">
           <div className="switch-lang dark-color text-end">
             <Link to="#">
@@ -64,7 +64,7 @@ const SignIn = () => {
           <div className="bottom-text text-center">
             <p>
               Having trouble logging into your account?
-              <strong>Please contact the <Link to="#">Help Center</Link> </strong>
+              <strong>Please contact the <Link to="/faqs">Help Center</Link> </strong>
             </p> 
           </div>
         </div>

@@ -4,21 +4,31 @@ import styled from "styled-components";
 export const SignInWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media ${DeviceDown.sm} {
+    flex-grow: 1;
+    flex-direction: column;
+  }
 
   .half-screen {
     width: 100%;
     display: flex;
+    flex-direction: column;
     position: relative;
-    min-height: 100vh;
+    min-height: 170px;
 
     @media ${DeviceUp.sm} {
       width: 50%;
+      min-height: 100vh;
     }
     @media ${DeviceDown.sm} {
       .hide-sm {
         display: none;
       }
     }
+  }
+
+  .text-area-screen {
+    flex-grow: 1;
   }
 
   .full-width-img {
@@ -57,7 +67,8 @@ export const SignInWrapper = styled.div`
     flex-grow: 1;
     margin: auto;
     height: 100%;
-    padding: 15px 20px 0;
+    width: 100%;
+    padding: 15px 15px 0;
 
     @media ${DeviceUp.md} {
       padding: 25px 40px 0;
@@ -65,10 +76,14 @@ export const SignInWrapper = styled.div`
   }
 
   .logo {
-    max-width: 120px;
+    max-width: 65px;
     text-align: center;
     margin: auto;
     padding: 10px 0;
+
+    @media ${DeviceUp.sm} {
+      max-width: 120px;
+    }
   }
 
   .text-block {
@@ -76,6 +91,21 @@ export const SignInWrapper = styled.div`
     width: 100%;
     margin: auto;
     padding: 30px 0 0;
+
+    @media ${DeviceDown.sm} {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      margin: 0 auto;
+
+      .theme-btn {
+        margin-top: auto;
+      }
+
+      .btn-inline {
+        text-align: right;
+      }
+    }
 
     h1 {
       font-size: 32px;
