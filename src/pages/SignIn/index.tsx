@@ -32,7 +32,7 @@ const SignIn = () => {
         <div className="content-area">
           <div className="switch-lang dark-color text-end">
             <Link to="#">
-              العربية <i className="sm-icon arrow-icon icon-black"></i>
+              العربية
             </Link>
           </div>
 

@@ -13,7 +13,7 @@ const Header: FC<any> = () => {
           <i className="sm-icon bell-icon"></i>
         </NotifyIcon>
         <span className="separator"></span>
-        <Link to="#">Ar</Link>
+        <Link to="#">العربية</Link>
       </div>
     </HeaderWrapper>
   );

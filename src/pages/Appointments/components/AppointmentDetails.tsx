@@ -128,7 +128,7 @@ const AppointmentDetails: FC<any> = ({
           New appointment
         </button>
         <div className="map-loc">
-          <img src={MapImg} alt="" />
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3575.843616257482!2d50.2120739!3d26.3315629!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49e62f08476d37%3A0xd7b0c8ad9518770b!2z2YXYsdmD2LIg2LHYqtin2YQg2YTZhNij2LnZhdin2YQgfCBSZXRhbCBCdXNpbmVzcyBDZW50ZXLigI8!5e0!3m2!1sen!2s!4v1696739610747!5m2!1sen!2s" width="100%" height="165" loading="lazy"></iframe>
         </div>
       </div>
     </AppointmentDetailWrapper>

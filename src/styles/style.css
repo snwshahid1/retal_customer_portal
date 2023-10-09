@@ -203,7 +203,7 @@ p { margin:0 0 10px; }
 .flex-nowrap {
   flex-wrap: nowrap;
 }
-.flex-ceter {
+.flex-center {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -264,6 +264,12 @@ p { margin:0 0 10px; }
 }
 .nav-appointment-icon {
   background: url(../assets/icons/calendar-icon.svg) no-repeat center center;
+}
+.nav-faqs-icon {
+  background: url(../assets/icons/faqs-icon.svg) no-repeat center center;
+}
+.nav-contact-icon {
+  background: url(../assets/icons/nav-contact-icon.svg) no-repeat center center;
 }
 .calendar-icon2 {
   background: url(../assets/icons/calendar-icon2.svg) no-repeat center center;
@@ -670,7 +676,7 @@ input::placeholder {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 .payment-boxes {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   margin: 0 0 30px;
 }
 .payment-boxes .box-content {
@@ -803,6 +809,9 @@ input::placeholder {
   box-shadow: none;
 }
 
+iframe {
+  border: none;
+}
 @media only screen and (min-width: 767px) {
   .white-text-box {
     padding: 25px;
@@ -810,6 +819,12 @@ input::placeholder {
 }
 
 @media only screen and (max-width: 475px) {
+  .payment-boxes {
+    gap: 5px;
+  }
+  .payment-boxes .box-content h3 {
+    font-size: 14px;
+  }
   .px-40 {
     padding-left: 15px;
     padding-right: 15px;

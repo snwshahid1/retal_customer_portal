@@ -31,7 +31,7 @@ const VerifyNumber = () => {
         <div className="content-area">
           <div className="switch-lang dark-color text-end">
             <Link to="#">
-              العربية <i className="sm-icon arrow-icon icon-black"></i>
+              العربية
             </Link>
           </div>
 
@@ -68,13 +68,14 @@ const VerifyNumber = () => {
                 maxlength={1}
               />
             </div>
-
-            <button
-              onClick={() => {}}
-              className="btn-inline mt-20 mb-3"
-            >
-              Send a new code
-            </button>
+            <div className="send-code-btn">
+              <button
+                onClick={() => {}}
+                className="btn-inline mt-20 mb-3"
+              >
+                Send a new code
+              </button>
+            </div>
 
             <button
               onClick={() => {navigate('/dashboard')}}

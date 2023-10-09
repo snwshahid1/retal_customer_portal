@@ -1,6 +1,7 @@
 import TextAreaField from "src/elements/Form/TextAreaField";
 import { FC } from "react";
 import { AppFeedbackWrapper } from "../style";
+import StarRating from "src/elements/StarRating";
 
 const AppointmentFeedback: FC<any> = () => {
 
@@ -38,13 +39,7 @@ const AppointmentFeedback: FC<any> = () => {
       <div className="app-details-bottom">
         <div className="app-quality">
           <label>Please, evaluate the quality of the appointment.</label>
-          <div className="star-rating flex-base-wrapper justify-content-center flex-nowrap">
-            <i className="star-icon icon-primary"></i>
-            <i className="star-icon icon-primary"></i>
-            <i className="star-icon icon-primary"></i>
-            <i className="star-icon icon-primary"></i>
-            <i className="star-icon icon-gray"></i>
-          </div>
+          <StarRating rated={4} />
         </div>
 
         <div className="form-field mb-2">

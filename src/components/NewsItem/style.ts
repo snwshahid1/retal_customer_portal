@@ -12,6 +12,7 @@ export const NewsItem = styled.div`
     img {
       width: 100%;
       object-fit: cover;
+      height: 250px;
     }
   }
 
@@ -56,6 +57,7 @@ export const NewsItem = styled.div`
       align-items: center;
       justify-content: center;
       background: var(--primary-color);
+      color: var(--white);
       font-size: 13px;
       font-weight: 500;
 

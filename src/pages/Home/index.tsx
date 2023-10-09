@@ -17,7 +17,7 @@ const Home = () => {
           </div>
           <div className="switch-lang">
             <Link to="#">
-              العربية <i className="sm-icon arrow-icon"></i>
+              العربية
             </Link>
           </div>
         </div>

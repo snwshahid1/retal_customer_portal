@@ -100,6 +100,18 @@ export const ServicesRoutes = {
     iconClass: 'nav-appointment-icon',
     component: <Appointments />,
   },
+  FAQ: {
+    name: 'FAQs',
+    path: `/faqs`,
+    iconClass: 'nav-faqs-icon',
+    component: <FAQs />,
+  },
+  CONTACT: {
+    name: 'Contact Us',
+    path: `/contact`,
+    iconClass: 'nav-contact-icon',
+    component: <Contact />,
+  },
 };
 
 export const MoreDashboardRoutes = {
