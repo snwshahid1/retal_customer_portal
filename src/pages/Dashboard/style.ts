@@ -43,6 +43,12 @@ export const DashboardHolder = styled.div`
     }
   }
 
+  .property-sm-carousel {
+    .slick-list {
+      padding-left: 0 !important;
+    }
+  }
+
   .property-progress-area {
     flex-grow: 1;
     width: 100%;
@@ -160,6 +166,7 @@ export const DashboardHolder = styled.div`
     transition: 0.4s all;
     cursor: pointer;
 
+    &.active-tab,
     &:hover {
       border-color: var(--primary-color);
       background: var(--primary-color);
@@ -168,6 +175,16 @@ export const DashboardHolder = styled.div`
       transition: 0.4s all;
     }
   }
+
+  // .slick-current {
+  //   .property-tag {
+  //     border-color: var(--primary-color);
+  //     background: var(--primary-color);
+  //     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  //     color: var(--white);
+  //     transition: 0.4s all;
+  //   }
+  // }
 
   .progress-right {
     min-width: 160px;
@@ -376,6 +393,8 @@ export const DashboardHolder = styled.div`
     position: relative;
     height: 100%;
     min-height: 200px;
+    display: flex;
+    flex-direction: column;
 
     .watch-video-img {
       width: 100%;
@@ -399,6 +418,7 @@ export const DashboardHolder = styled.div`
       height: 100%;
       display: flex;
       flex-direction: column;
+      flex-grow: 1;
 
       .watch-text {
         font-size: 18px;
@@ -707,6 +727,9 @@ export const WeatherWidgetHolder = styled.div`
 
 export const LatestNewsHolder = styled.div`
   .news-carousel {
+    .slick-list {
+      padding-left: 20%;
+    }
     .news-item {
       margin: 0 5px;
     }
@@ -718,19 +741,35 @@ export const RateTeam = styled.div`
   flex-direction: column;
   flex-grow: 1;
 
+  .rate-option {
+    .radio-option {
+      position: relateive;
+
+      label {
+        color: rgba(0, 0, 0, 0.4) !important;
+        background: #F2F2F2;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    input[type="radio"] {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+
+      &:checked + label {
+        background: var(--primary-color);
+        color: var(--white) !important;
+      }
+    }
+  }
   .rate-btns {
     .theme-btn {
       min-width: 70px;
       box-shadow: none;
       font-family: var(--font-family-secondary);
-
-      &.no-btn {
-        color: rgba(0, 0, 0, 0.4) !important;
-        background: #F2F2F2;
-      }
-      &.yes-btn {
-        background: var(--primary-color);
-      }
     }
   }
 
@@ -753,13 +792,6 @@ export const RateTeam = styled.div`
         font-size: 15px;
         font-family: var(--font-family-secondary);
       }
-    }
-  }
-  .star-rating {
-    .star-icon{
-      width: 24px;
-      height: 24px;
-      margin: 2px 4px;
     }
   }
 

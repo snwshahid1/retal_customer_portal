@@ -9,6 +9,11 @@ export const NotificationWrapper = styled.div`
     border-bottom: none;
   }
 
+  &:hover {
+    background: #EDE7E5;
+    border-bottom-color: #EDE7E5; 
+  }
+
   &.unread-item {
     &::before {
       content: "";

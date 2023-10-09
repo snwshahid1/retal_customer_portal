@@ -13,11 +13,20 @@ import SlickArrows from "./components/SlickArrows";
 import SidebarDialog from "src/components/SidebarDialog";
 import RateSalesTeam from "./components/RateSalesTeam";
 import CircleProgress from "src/elements/CircleProgress";
-import GalleryImg1 from "src/assets/images/dashboard-gallery-img.png";
+import classNames from "classnames";
+import Tab1Gallery from "./TabContent/Tab1Gallery";
+import Tab2Gallery from "./TabContent/Tab2Gallery";
+import Tab3Gallery from "./TabContent/Tab3Gallery";
+import Tab4Gallery from "./TabContent/Tab4Gallery";
+import Tab1Content from "./TabContent/Tab1Content";
+import Tab4Content from "./TabContent/Tab4Content";
+import Tab2Content from "./TabContent/Tab2Content";
+import Tab3Content from "./TabContent/Tab3Content";
 
 const Dashboard = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
-  const propertySlider = useRef(null);
+  const propertyActiveSlide = useRef([]);
+  const propertySlider = useRef<any>('');
   const gallerySlider = useRef(null);
 
   const handleCloseDialog = () => setIsOpenDialog(false);
@@ -33,26 +42,43 @@ const Dashboard = () => {
 
   const propertySliderSettings = {
     draggable: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 3.5,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    centerMode: true,
     arrows: false,
+    //afterChange: (index: any) => test(index),
     responsive: [
       {
-        breakpoint: 1199,
+        breakpoint: 1299,
         settings: {
-          slidesToShow: 2.5,
+          slidesToShow: 2,
         }
       },
       {
         breakpoint: 420,
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1,
         }
       }
     ]
   };
+
+  const propertyTabs = [
+    'Property n°861103',
+    'Property n°268638',
+    'Property n°59762',
+    'Property n°329469'
+  ]
+  const propertyTabsCount = propertyTabs.length-1;
+  const [currentTab, setCurrentTab] = useState<number>(propertyTabsCount);
+  const [currentTabPanel, setCurrentTabPanel] = useState<string>(`tabpanel-${propertyTabsCount}`);
+
+  const goToSlide = (index: any) => {
+    setCurrentTab(index);
+    setCurrentTabPanel(`tabpanel-${index}`)
+  }
 
   return (
     <DashboardHolder>
@@ -61,7 +87,7 @@ const Dashboard = () => {
           <div className="flex-box align-items-start">
             <div className="property-progress-area">
               <div className="sec-title">
-                <h4>Property & Progress</h4>
+                <h4>Property &amp; Progress</h4>
                 <SlickArrows slider={propertySlider} />
               </div>
 
@@ -70,124 +96,47 @@ const Dashboard = () => {
                   ref={propertySlider}
                   sliderSettings={propertySliderSettings}
                 >
-                  <div className="slider-item">
-                    <div className="property-tag">Property n°861103</div>
-                  </div>
-                  <div className="slider-item">
-                    <div className="property-tag">Property n°268638</div>
-                  </div>
-                  <div className="slider-item">
-                    <div className="property-tag">Property n°59762</div>
-                  </div>
-                  <div className="slider-item">
-                    <div className="property-tag">Property n°329469</div>
-                  </div>
+                  {propertyTabs.map( (item, index) => (
+                    <div className="slider-item" key={index}>
+                      <div
+                        className={ classNames("property-tag", {"active-tab" : index == currentTab} )}
+                        data-slide={index}
+                        onClick={(e) => goToSlide(index)}
+                      >
+                        {item}
+                      </div>
+                    </div>
+                  ))}
                 </SlickSlider>
               </div>
 
-              <div className="property-infos">
-                <h5>information</h5>
-                <div className="property-info-boxes d-grid gap-5">
-                  <div className="info-box">
-                    <span>Villa area</span>
-                    <strong>5.00 SQM</strong>
-                  </div>
-                  <div className="info-box">
-                    <span>Plot area</span>
-                    <strong>250.00 SQM</strong>
-                  </div>
-                  <div className="info-box-big-col">
-                    <div className="info-box mb-1">
-                      <span>
-                        Handover Date:
-                        <span className="ms-auto">Not assigned</span>
-                      </span>
-                    </div>
-                    <div className="info-box">
-                      <span>
-                        Warranty exp. date:
-                        <span className="ms-auto">Not assigned</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="progress-wrapper">
-                <h5>Progression</h5>
-                <div className="progress-wrapper-inner flex-wrap d-flex gap-20">
-                  <div className="progress-left">
-                    <ul className="progress-steps list-unstyled m-0 p-0">
-                      <li>
-                        <span>Step 01</span>
-                        <span className="step-icon icon-bg-green">
-                          <i className="check-icon2"></i>
-                        </span>
-                      </li>
-                      <li>
-                        <span>Step 02</span>
-                        <span className="step-icon icon-bg-yellow">
-                          <i className="waiting-icon2"></i>
-                        </span>
-                      </li>
-                      <li>
-                        <span>Step 03</span>
-                        <span className="step-icon icon-bg-red">
-                          <i className="lock-icon2"></i>
-                        </span>
-                      </li>
-                      <li>
-                        <span>Step 04</span>
-                        <span className="step-icon icon-bg-red">
-                          <i className="lock-icon2"></i>
-                        </span>
-                      </li>
-                    </ul>
-                    <div className="tasks-update">
-                      <span className="task-progress-bar">
-                        <span
-                          className="task-progress"
-                          style={{ width: `10%` }}
-                        ></span>
-                      </span>
-                      <h4>
-                        Task completed <span className="ms-auto">1/7</span>
-                      </h4>
-                    </div>
-                  </div>
-
-                  <div className="progress-right">
-                    <div className="circle-progress-holder">
-                      <CircleProgress percentage={25} />
-                      <div className="circle-center">
-                        <h2>25%</h2>
-                        <span>progression</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  className="theme-btn min-140 mb-1"
-                  onClick={() => setIsOpenDialog(true)}
-                >
-                  View details
-                </button>
-              </div>
+              {currentTabPanel && currentTabPanel === 'tabpanel-0' && 
+                <Tab1Content opendDialog={() => setIsOpenDialog(true)} />
+              }
+              {currentTabPanel && currentTabPanel === 'tabpanel-1' && 
+                <Tab2Content opendDialog={() => setIsOpenDialog(true)} />
+              }
+              {currentTabPanel && currentTabPanel === 'tabpanel-2' && 
+                <Tab3Content opendDialog={() => setIsOpenDialog(true)} />
+              }
+              {currentTabPanel && currentTabPanel === 'tabpanel-3' && 
+                <Tab4Content opendDialog={() => setIsOpenDialog(true)} />
+              }
             </div>
             <div className="dashboard-img-carousel">
               <SlickArrows slider={gallerySlider} />
-              <SlickSlider
-                ref={gallerySlider}
-                sliderSettings={gallerySliderSettings}
-              >
-                <div className="img-slide">
-                  <img src={GalleryImg1} alt="" />
-                </div>
-
-                <div className="img-slide">
-                  <img src="https://dummyimage.com/820x750/000/fff" alt="" />
-                </div>
-              </SlickSlider>
+              {currentTabPanel && currentTabPanel === 'tabpanel-0' && 
+                <Tab1Gallery referance={gallerySlider} sliderSettings={gallerySliderSettings} />
+              }
+              {currentTabPanel && currentTabPanel === 'tabpanel-1' &&
+                <Tab2Gallery referance={gallerySlider} sliderSettings={gallerySliderSettings} />
+              }
+              {currentTabPanel && currentTabPanel === 'tabpanel-2' &&
+                <Tab3Gallery referance={gallerySlider} sliderSettings={gallerySliderSettings} />
+              }
+              {currentTabPanel && currentTabPanel === 'tabpanel-3' &&
+                <Tab4Gallery referance={gallerySlider} sliderSettings={gallerySliderSettings} />
+              }
             </div>
           </div>
         </div>

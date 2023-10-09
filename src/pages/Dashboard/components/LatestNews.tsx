@@ -8,7 +8,7 @@ import SlickSlider from "src/components/SlickSlider";
 import SlickArrows from "./SlickArrows";
 
 const LatestNews: FC<any> = () => {
-  const slider = useRef(null);
+  const slider = useRef<any>('');
 
   const CarouselData = [
     {
@@ -42,8 +42,8 @@ const LatestNews: FC<any> = () => {
   ];
 
   const sliderSettings = {
-    draggable: false,
-    infinite: false,
+    draggable: true,
+    infinite: true,
     speed: 500,
     slidesToShow: 2.5,
     slidesToScroll: 1,
@@ -63,6 +63,17 @@ const LatestNews: FC<any> = () => {
       }
     ]
   };
+
+  // const onWheelScroll = (e: any) => {
+  //   //e.stopPropagation();
+
+  //   if (e.deltaY < 0) {
+  //     slider?.current?.slickNext();
+  //   } else {
+  //     slider?.current?.slickPrev();
+  //   }
+  //   return false;
+  // }
 
   return (
     <LatestNewsHolder>

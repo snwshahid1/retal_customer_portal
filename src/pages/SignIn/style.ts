@@ -91,6 +91,10 @@ export const SignInWrapper = styled.div`
     margin: auto;
     padding: 30px 0 0;
 
+    .send-code-btn {
+      text-align: center;
+    }
+
     @media ${DeviceDown.sm} {
       display: flex;
       flex-direction: column;
@@ -101,6 +105,7 @@ export const SignInWrapper = styled.div`
         margin-top: auto;
       }
 
+      .send-code-btn,
       .btn-inline {
         text-align: right;
       }

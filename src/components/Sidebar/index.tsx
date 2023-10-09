@@ -93,7 +93,7 @@ const Sidebar: FC<any> = () => {
         </div>
 
         <div className="sidebar-bottom mt-auto">
-          <ContactBox className="sidebar-contact-box">
+          {/* <ContactBox className="sidebar-contact-box">
             <h4>A Question ?</h4>
             <p>
               Read our <Link to="/faqs">FAQ</Link> or contact us.
@@ -101,7 +101,7 @@ const Sidebar: FC<any> = () => {
             <Link to="/contact" className="theme-btn text-uppercase fs-13 w-100">
               Contact Us <i className="sm-icon ms-1 md-arrow-icon"></i>
             </Link>
-          </ContactBox>
+          </ContactBox> */}
           <Copyright>
             <p className="fs-10">&copy; Retal Development. All rights reserved.</p>
           </Copyright>

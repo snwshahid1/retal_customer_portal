@@ -186,6 +186,7 @@ export const AppointmentDetailWrapper = styled.div`
 
       img,
       iframe {
+        border: none;
         width: 100%;
       }
     }
@@ -232,14 +233,6 @@ export const AppFeedbackWrapper = styled.div`
 
       .star-rating {
         padding: 8px 0;
-      }
-
-      .star-icon {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        margin: 3px 8px;
-        cursor: pointer;
       }
     }
 

@@ -16,7 +16,7 @@ export const PropertiesHolder = styled.div`
 
   .properties-list-wrapper {
     display: grid;
-    grid-template-columns: repeat( auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr));
     gap: 10px;
   }
 `;
@@ -156,6 +156,11 @@ export const PropertiesDetailsHolder = styled.div`
 
     .propery-map {
       margin-top: 20px;
+      iframe {
+        border: none;
+        height: 430px;
+        width: 100%;
+      }
     }
   }
 

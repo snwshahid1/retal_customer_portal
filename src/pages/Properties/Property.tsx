@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { PropertiesDetailsHolder } from "./style";
-import Map from "src/assets/images/property-map.png";
 import SlickSlider from "src/components/SlickSlider";
 import ProperyImage from "src/assets/images/property-main-img.png";
 import QuickAccess from "src/components/QuickAccess";
@@ -188,7 +187,7 @@ const Property = () => {
             <div className="white-text-box">
               <h4>View on map</h4>
               <div className="propery-map">
-                <img src={Map} alt="" />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3575.843616257482!2d50.2120739!3d26.3315629!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49e62f08476d37%3A0xd7b0c8ad9518770b!2z2YXYsdmD2LIg2LHYqtin2YQg2YTZhNij2LnZhdin2YQgfCBSZXRhbCBCdXNpbmVzcyBDZW50ZXLigI8!5e0!3m2!1sen!2s!4v1696739610747!5m2!1sen!2s" width="100%" height="430" loading="lazy"></iframe>
               </div>
             </div>
           </div>
