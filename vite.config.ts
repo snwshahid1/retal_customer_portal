@@ -8,8 +8,9 @@ export default defineConfig({
   resolve: {
     alias: {
       src: path.resolve('src'),
+      'react-native': 'react-native-web'
     },
-  },
+  }
 })
 
 

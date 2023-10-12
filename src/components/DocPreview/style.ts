@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FilePreviewHolder = styled.div`
+export const DocPreviewHolder = styled.div`
   max-width: 750px;
   width: 100%;
   margin: 0 auto;

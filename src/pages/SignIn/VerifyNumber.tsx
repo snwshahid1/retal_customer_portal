@@ -78,7 +78,7 @@ const VerifyNumber = () => {
             </div>
 
             <button
-              onClick={() => {navigate('/dashboard')}}
+              onClick={() => {navigate('/dashboard#salesTeam')}}
               className="theme-btn btn-primary btn-lg w-100"
             >
               Validate

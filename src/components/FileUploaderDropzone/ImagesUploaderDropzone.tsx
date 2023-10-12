@@ -1,13 +1,29 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { ErrorMsg } from "../FormField/style";
+import SlickSlider from "../SlickSlider";
 import { FileUpload } from "../UploadFile/style";
 import { FileUploaderHolder } from "./style";
 
-function FileUploaderDropzone({ maxNumberOfFiles = 5, children }: any) {
+function ImagesUploaderDropzone({ maxNumberOfFiles = 5, children }: any) {
   const [uploadedFiles, setuploadedFiles] = useState<any>([]);
   const [errors, setErrors] = useState("");
   const MAX_FILE_SIZE = 19;
+
+  const sliderSettings = {
+    draggable: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
+  useEffect(() => {
+    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+    return () =>
+      files.forEach((file: any) => URL.revokeObjectURL(file.preview));
+  }, []);
 
   const onDrop = useCallback(
     (acceptedFiles: any) => {
@@ -32,10 +48,12 @@ function FileUploaderDropzone({ maxNumberOfFiles = 5, children }: any) {
     onDrop,
     maxFiles: maxNumberOfFiles,
     maxSize: MAX_FILE_SIZE * 1000,
+    accept: {
+      "image/*": [],
+    },
   });
 
   const fileRejectionItems = fileRejections.map(({ file, errors }: any) => {
-    console.log(errors);
     return (
       <li key={file.path}>
         {file.path} - {file.size / 1000} kb
@@ -66,23 +84,19 @@ function FileUploaderDropzone({ maxNumberOfFiles = 5, children }: any) {
 
   const files = uploadedFiles.map((file: any) => (
     <li key={file.path}>
-      <button onClick={removefile(file)} className="remove-btn">
-        <i className="close-btn"></i>
-      </button>
-
-      <span className="doc-icon-holder">
-        <i className="doc-icon3"></i>
-      </span>
-      <div className="preview-detail">
-        <span className="file-name">{file.path}</span>
-        <span className="file-size">
-          {file.size / 1000} kb{" "}
-          <span className="file-progress">100%</span>
-        </span>
-        <span className="file-progress-bar">
-          <span className="file-actual-progres" style={{width: '100%'}}></span>
-        </span>
+      <div className="slider-item">
+        <div className="slider-img">
+          <button onClick={removefile(file)}>
+            <i className="close-btn"></i>
+          </button>
+          <img
+            src={file.preview}
+            // Revoke data uri after image is loaded
+            //onLoad={() => { URL.revokeObjectURL(file.preview) }}
+          />
+        </div>
       </div>
+      {/* {file.path} - {file.size / 1000} kb{" "} */}
     </li>
   ));
 
@@ -100,9 +114,10 @@ function FileUploaderDropzone({ maxNumberOfFiles = 5, children }: any) {
       {fileRejectionItems}
 
       {files.length > 0 && (
-        <div className="uploaded-files">
+        <div className="uploaded-images">
+          <h4>Added photos</h4>
           <ul className="list-unstyled p-0 m-0">
-            {files}
+            <SlickSlider sliderSettings={sliderSettings}>{files}</SlickSlider>
           </ul>
         </div>
       )}
@@ -112,4 +127,4 @@ function FileUploaderDropzone({ maxNumberOfFiles = 5, children }: any) {
   );
 }
 
-export default FileUploaderDropzone;
+export default ImagesUploaderDropzone;

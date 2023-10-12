@@ -1,7 +1,7 @@
 import DocumentItem from "src/components/DocumentItem";
 import PageTitle from "src/components/PageTitle";
 import { useState } from "react";
-import FilePreview from "src/components/FilePreview";
+import DocPreview from "src/components/DocPreview";
 import Modal from "src/components/Modal";
 import { useClickAway } from "@uidotdev/usehooks";
 import { useLocation } from "react-router-dom";
@@ -66,7 +66,7 @@ const Documents = () => {
       </div>
       {isDocView && (
         <Modal ref={ref} open={isDocView} className="modal-xl border-radius-10">
-          <FilePreview />
+          <DocPreview />
         </Modal>
       )}
     </>

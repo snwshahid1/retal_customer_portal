@@ -1,19 +1,19 @@
 import { FC, memo } from "react";
-import { FilePreviewHolder } from "./style";
+import { DocPreviewHolder } from "./style";
 import iFrameUrl from "src/assets/docs/sample.pdf";
 
-const FilePreview: FC<any> = ({ iFrameURL = iFrameUrl, fileTitle }) => {
+const DocPreview: FC<any> = ({ iFrameURL = iFrameUrl, fileTitle }) => {
 
   return (
-    <FilePreviewHolder>
+    <DocPreviewHolder>
       <iframe
         src={iFrameURL}
         title={fileTitle}
         height='100%'
         width='100%'
       />
-    </FilePreviewHolder>
+    </DocPreviewHolder>
   );
 };
 
-export default memo(FilePreview);
+export default memo(DocPreview);
