@@ -3,7 +3,7 @@ import {
 } from "react-router-dom"
 import ScrollToTop from "./elements/ScrollToTop"
 import { AppRouter } from './routes'
-import { TranslationProvider } from "./hooks/useTranslation"
+import { TranslationProvider } from "./Hooks/useTranslation";
 
 function App() {
 

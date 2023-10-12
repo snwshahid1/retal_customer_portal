@@ -563,6 +563,10 @@ export const DashboardHolder = styled.div`
   .marketplace-slider {
     padding: 5px 0;
 
+    .slick-list {
+      padding-left: 0 !important;
+    }
+
     .slider-item {
       padding: 0 4px;
       margin: auto;

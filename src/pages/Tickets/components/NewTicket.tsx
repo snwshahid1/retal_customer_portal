@@ -4,17 +4,12 @@ import { NewTicketWrapper } from "../style";
 import SelectField from "src/elements/Form/SelectField";
 import TextField from "src/elements/Form/TextField";
 import TextAreaField from "src/elements/Form/TextAreaField";
-import { FileUpload } from "src/components/UploadFile/style";
 import ToggleDropdown from "src/components/ToggleDropdown";
 import CheckboxList from "src/elements/CheckboxList";
 import { useClickAway } from "@uidotdev/usehooks";
-import SlickSlider from "src/components/SlickSlider";
 import { useFormik } from "formik";
 import { validateTicket } from "../Validation";
-import UploadImage1 from "src/assets/images/upload-img1.png";
-import UploadImage2 from "src/assets/images/upload-img2.png";
-import UploadImage3 from "src/assets/images/upload-img3.png";
-import UploadImage4 from "src/assets/images/upload-img4.png";
+import ImagesUploaderDropzone from "src/components/FileUploaderDropzone/ImagesUploaderDropzone";
 
 const NewTicket: FC<any> = ({}) => {
   const [toggleCategories, setToggleCategories] = useState(false);
@@ -67,23 +62,6 @@ const NewTicket: FC<any> = ({}) => {
   useEffect( () => {
     setFieldValue('categories', categories);
   }, [categories]);
-
-  const sliderSettings = {
-    draggable: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-  };
-
-  const UploadeImages = [
-    UploadImage1,
-    UploadImage2,
-    UploadImage3,
-    UploadImage4,
-    UploadImage1,
-  ];
 
   const options = [
     {
@@ -199,37 +177,19 @@ const NewTicket: FC<any> = ({}) => {
         />
 
         <FormField
-          className="bg-grey-field mb-0"
+          className="bg-grey-field"
           label="Import photos"
           labelDescription="10 photos max"
           control={
-            <FileUpload>
+            <ImagesUploaderDropzone
+              maxNumberOfFiles={10}
+            >
               <i className="add-file-icon mb-1"></i>
               <h4>Choose file to upload</h4>
               <span>19 kb max</span>
-            </FileUpload>
+            </ImagesUploaderDropzone>
           }
         />
-
-        <div className="uploaded-images mb-2">
-          <h4>Added photos</h4>
-          <ul className="list-unstyled p-0 m-0">
-            <SlickSlider sliderSettings={sliderSettings}>
-              {UploadeImages.map((image: any, i: number) => (
-                <li key={i}>
-                  <div className="slider-item">
-                    <div className="slider-img">
-                      <button>
-                        <i className="close-btn"></i>
-                      </button>
-                      <img src={image} alt="" />
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </SlickSlider>
-          </ul>
-        </div>
       </div>
 
       <div className="new-ticket-bottom sticky-bottom">

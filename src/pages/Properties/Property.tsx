@@ -101,7 +101,7 @@ const Property = () => {
   return(
     <>
       <PropertiesDetailsHolder>
-        <Link to="/properties">
+        <Link to="/properties" className="back-properties-btn">
           <i className="sm-icon arrow-icon-right arrow-icon icon-black me-2"></i> 
           Back to properties
         </Link>

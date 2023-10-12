@@ -104,11 +104,6 @@ export const SignInWrapper = styled.div`
       .theme-btn {
         margin-top: auto;
       }
-
-      .send-code-btn,
-      .btn-inline {
-        text-align: right;
-      }
     }
 
     h1 {

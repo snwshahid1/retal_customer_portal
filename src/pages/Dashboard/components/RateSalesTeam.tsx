@@ -4,7 +4,6 @@ import TextAreaField from "src/elements/Form/TextAreaField";
 import StarRating from "src/elements/StarRating";
 
 const RateSalesTeam: FC<any> = () => {
-  
   return (
     <RateTeam>
       <h2>Rate Sales Team</h2>
@@ -34,12 +33,22 @@ const RateSalesTeam: FC<any> = () => {
           <div className="rate-option">
             <div className="d-flex gap-10 rate-btns">
               <div className="radio-option">
-                <input id="yesOption" type="radio" name="q_answer3" value="Yes" checked />
-                <label htmlFor="yesOption" className="theme-btn">Yes</label>
+                <input
+                  id="yesOption"
+                  type="radio"
+                  name="q_answer3"
+                  value="Yes"
+                  defaultChecked
+                />
+                <label htmlFor="yesOption" className="theme-btn">
+                  Yes
+                </label>
               </div>
               <div className="radio-option">
                 <input id="noOption" type="radio" name="q_answer3" value="No" />
-                <label htmlFor="noOption" className="theme-btn">No</label>
+                <label htmlFor="noOption" className="theme-btn">
+                  No
+                </label>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { PaymentDetailsWrapper } from "../style";
-import { FileUpload } from "src/components/UploadFile/style";
+import FileUploaderDropzone from "src/components/FileUploaderDropzone";
 
 const PaymentDetails: FC<any> = () => {
 
@@ -42,11 +42,11 @@ const PaymentDetails: FC<any> = () => {
         <p>
           Import a proof to justify your payment
         </p>
-        <FileUpload>
+        <FileUploaderDropzone>
           <i className="add-file-icon mb-1"></i>
           <h4>Choose file to upload</h4>
           <span>19 kb max</span>
-        </FileUpload>
+        </FileUploaderDropzone>
       </div>
     </PaymentDetailsWrapper>
   )

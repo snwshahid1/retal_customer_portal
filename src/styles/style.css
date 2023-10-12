@@ -817,13 +817,20 @@ iframe {
     padding: 25px;
   }
 }
-
+@media only screen and (max-width: 575px) {
+  .payment-boxes .box-content {
+    padding: 20px 8px;
+  }
+  .payment-boxes .box-content h3 {
+    font-size: 3.4vw;
+  }
+}
 @media only screen and (max-width: 475px) {
   .payment-boxes {
     gap: 5px;
   }
-  .payment-boxes .box-content h3 {
-    font-size: 14px;
+  .box-content span {
+    font-size: 2.5vw;
   }
   .px-40 {
     padding-left: 15px;

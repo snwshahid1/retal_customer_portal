@@ -19,7 +19,7 @@ export const NewTicketWrapper = styled.div`
 
     .uploaded-images {
       background: #FAFAFA;
-      padding: 0 14px 18px;
+      padding: 18px 0 0;
 
       h4 {
         font-weight: 500;

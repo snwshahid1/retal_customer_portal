@@ -1,4 +1,4 @@
-import { DeviceUp } from "src/styles/breakpoints";
+import { DeviceDown, DeviceUp } from "src/styles/breakpoints";
 import { styled } from "styled-components";
 
 export const PropertiesHolder = styled.div`
@@ -16,12 +16,31 @@ export const PropertiesHolder = styled.div`
 
   .properties-list-wrapper {
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat( auto-fit, minmax(100%, 1fr));
     gap: 10px;
+
+    @media ${DeviceUp.sm} {
+      grid-template-columns: repeat( auto-fit, minmax(350px, 1fr));
+    }
   }
 `;
 
 export const PropertiesDetailsHolder = styled.div`
+  margin-top: -40px;
+
+  .back-properties-btn {
+    position: relative;
+    top: -22px;
+
+    @media ${DeviceDown.md} {
+      left: 30px;
+    }
+
+    @media ${DeviceDown.xs} {
+      left: 0px;
+      top: -5px;
+    }
+  }
 
   .property-top-section {
     margin: 30px auto 20px;

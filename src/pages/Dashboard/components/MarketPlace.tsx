@@ -24,11 +24,13 @@ const MarketPlace: FC<any> = () => {
 
   const sliderSettings = {
     draggable: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 2.7,
+    slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
+    centerMode: true,
+    centerPadding: "30px",
   };
 
   return (
