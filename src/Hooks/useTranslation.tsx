@@ -1,7 +1,4 @@
-import { getItemAsync, setItemAsync } from "expo-secure-store";
-import React, { useState, createContext, useContext, ReactNode, useEffect } from "react";
-import { I18nManager, Platform } from "react-native";
-import * as Updates from "expo-updates";
+import { useState, createContext, useContext, ReactNode, useEffect } from "react";
 
 interface Translation {
     [key: string]: string;
@@ -13,13 +10,13 @@ interface Translations {
 
 interface TranslationContextType {
     language: string;
-    translate: (key: string) => string;
+    translate: (key: string, optional?: Record<string, any>) => string;
     switchLanguage: (newLanguage: string) => void;
 }
 
 const translations: Translations = {
     ar: {
-        "Hello World": "مرحبا بالعالم",
+        "Hello World {name}": "مرحبا بالعالم {name}" ,
     },
 };
 
@@ -34,33 +31,24 @@ interface TranslationProviderProps {
 const TranslationProvider = ({ children }: TranslationProviderProps) => {
     const [language, setLanguage] = useState("en");
 
-    const translate = (key: string) => {
-
-        if (language === "ar") {
-            return translations[language][key] || key;
-        } else {
-            return key;
+    const translate = (key: string, optional?: Record<string, any>) => {
+        let translation = language === "ar" ? translations[language][key] || key : key;
+    
+        if (optional) {
+            for (const placeholder in optional) {
+                if (optional.hasOwnProperty(placeholder)) {
+                    const placeholderValue = optional[placeholder];
+                    const placeholderRegex = new RegExp(`{${placeholder}}`, "g");
+                    translation = translation.replace(placeholderRegex, placeholderValue);
+                }
+            }
         }
+        return translation;
     };
 
     const switchLanguage = (newLanguage: string) => {
         setLanguage(newLanguage);
-        setItemAsync("language", newLanguage);
-
-        if (Platform.OS === "android") {
-
-            if (newLanguage === "ar") {
-                I18nManager.allowRTL(true);
-                I18nManager.forceRTL(true);
-                Updates.reloadAsync()
-            } else {
-                I18nManager.allowRTL(false);
-                I18nManager.forceRTL(false);
-                Updates.reloadAsync()
-            }
-
-        }
-
+        localStorage.setItem("language", newLanguage)
     };
 
     const contextValue: TranslationContextType = {
@@ -70,13 +58,12 @@ const TranslationProvider = ({ children }: TranslationProviderProps) => {
     };
 
     useEffect(() => {
-        getItemAsync("language").then((language) => {
-            if (language) {
-                setLanguage(language);
-            } else {
-                setLanguage("en");
-            }
-        });
+        let slanguage = localStorage.getItem("language")
+        if (slanguage) {
+            setLanguage(slanguage);
+        } else {
+            setLanguage("en");
+        }
     }, []);
 
     return (

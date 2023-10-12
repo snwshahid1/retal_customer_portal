@@ -3,8 +3,17 @@ import { HomeWrapper } from "./style";
 import LogoRetal from "src/assets/images/retal-logo-white.svg";
 import RetalHome from "src/assets/images/home-bg-img.png";
 import { Copyright } from "src/components/Sidebar/style";
+import { useTranslation } from "src/Hooks/useTranslation";
+import { useEffect } from "react";
 
 const Home = () => {
+
+  let { translate, switchLanguage } = useTranslation()
+
+  useEffect(() => {
+    switchLanguage("ar")
+  }, [])
+
   return (
     <HomeWrapper>
       <div className="full-page-img">
@@ -23,6 +32,7 @@ const Home = () => {
         </div>
         <div className="text-block">
           <h1>
+            
             Welcome Home, <br /> start your journey here
           </h1>
           <p>
@@ -30,7 +40,7 @@ const Home = () => {
             virtues of urbanism.
           </p>
           <Link to="/sign-in" className="theme-btn theme-btn-white btn-lg w-100">
-            Sign In
+            Sign In {translate("Hello World {name}", {name: "Ahmed"})}
           </Link>
         </div>
 
