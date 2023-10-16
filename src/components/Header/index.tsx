@@ -1,6 +1,8 @@
 import { FC, memo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HeaderWrapper, NotifyBubble, NotifyIcon } from "./style";
+import { useTranslation } from "src/Hooks/useTranslation";
+import SwitchLanguage from "src/elements/SwitchLanguage";
 
 const Header: FC<any> = () => {
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ const Header: FC<any> = () => {
           <i className="sm-icon bell-icon"></i>
         </NotifyIcon>
         <span className="separator"></span>
-        <Link to="#">العربية</Link>
+        <SwitchLanguage />
       </div>
     </HeaderWrapper>
   );

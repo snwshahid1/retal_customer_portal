@@ -4,8 +4,11 @@ import LogoRetal from "src/assets/images/retal-logo-white.svg";
 import RetalImage from "src/assets/images/sign-in-img.png";
 import TextField from "src/elements/Form/TextField";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "src/Hooks/useTranslation";
+import SwitchLanguage from "src/elements/SwitchLanguage";
 
 const VerifyNumber = () => {
+  let { translate } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -21,7 +24,7 @@ const VerifyNumber = () => {
           </div>
           <Copyright className="hide-sm">
             <p className="fs-10">
-              &copy; Retal Development. All rights reserved.
+              &copy; {translate("Retal Development. All rights reserved.")}
             </p>
           </Copyright>
         </div>
@@ -29,14 +32,10 @@ const VerifyNumber = () => {
 
       <div className="text-area-screen half-screen bg-gray">
         <div className="content-area">
-          <div className="switch-lang dark-color text-end">
-            <Link to="#">
-              العربية
-            </Link>
-          </div>
+          <SwitchLanguage className="text-end" />
 
           <div className="text-block">
-            <h1>Verify your number</h1>
+            <h1>{translate("Verify your number")}</h1>
             <p>Enter the code sent to +966 50 680 3006</p>
 
             <div className="code-fields">

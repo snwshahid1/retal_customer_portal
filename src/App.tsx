@@ -4,15 +4,17 @@ import {
 import ScrollToTop from "./elements/ScrollToTop"
 import { AppRouter } from './routes'
 import { TranslationProvider } from "./Hooks/useTranslation";
+import { ThemeProviderDirection } from "./Hooks/useDirection";
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
         <TranslationProvider>
-          <ScrollToTop />
-          <AppRouter />
+          <ThemeProviderDirection>
+            <ScrollToTop />
+            <AppRouter />
+          </ThemeProviderDirection>
         </TranslationProvider>
       </BrowserRouter>
     </>

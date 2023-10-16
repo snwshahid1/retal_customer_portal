@@ -71,6 +71,7 @@ export const HomeWrapper = styled.div`
 
     .text-block {
       max-width: 360px;
+      width: 100%;
       margin: auto;
       text-align: center;
       padding: 30px 0 0;

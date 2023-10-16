@@ -5,14 +5,15 @@ import RetalHome from "src/assets/images/home-bg-img.png";
 import { Copyright } from "src/components/Sidebar/style";
 import { useTranslation } from "src/Hooks/useTranslation";
 import { useEffect } from "react";
+import SwitchLanguage from "src/elements/SwitchLanguage";
 
 const Home = () => {
+  
+  let { translate } = useTranslation();
 
-  let { translate, switchLanguage } = useTranslation()
-
-  useEffect(() => {
-    switchLanguage("ar")
-  }, [])
+  // useEffect(() => {
+  //   switchLanguage("en")
+  // }, [])
 
   return (
     <HomeWrapper>
@@ -24,29 +25,23 @@ const Home = () => {
           <div className="logo">
             <img src={LogoRetal} alt="Retal" />
           </div>
-          <div className="switch-lang">
-            <Link to="#">
-              العربية
-            </Link>
-          </div>
+          <SwitchLanguage className="light-color" />
         </div>
         <div className="text-block">
           <h1>
-            
-            Welcome Home, <br /> start your journey here
+          {translate("Welcome Home,")} <br /> {translate("start your journey here")}
           </h1>
           <p>
-            We represent the quintessence of craftsmanship by embracing the
-            virtues of urbanism.
+            {translate("We represent the quintessence of craftsmanship by embracing the virtues of urbanism.")}
           </p>
           <Link to="/sign-in" className="theme-btn theme-btn-white btn-lg w-100">
-            Sign In {translate("Hello World {name}", {name: "Ahmed"})}
+            {translate("Sign In")}
           </Link>
         </div>
 
         <Copyright>
           <p className="fs-10">
-            &copy; Retal Development. All rights reserved.
+            &copy; {translate("Retal Development. All rights reserved.")}
           </p>
         </Copyright>
       </div>

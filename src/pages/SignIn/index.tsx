@@ -5,10 +5,13 @@ import RetalImage from "src/assets/images/sign-in-img.png";
 import FormField from "src/components/FormField";
 import TextField from "src/elements/Form/TextField";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "src/Hooks/useTranslation";
+import SwitchLanguage from "src/elements/SwitchLanguage";
 
 const SignIn = () => {
+  let { translate } = useTranslation();
   const navigate = useNavigate();
-  
+
   return (
     <SignInWrapper>
       <div className="half-screen">
@@ -22,7 +25,7 @@ const SignIn = () => {
           </div>
           <Copyright className="hide-sm">
             <p className="fs-10">
-              &copy; Retal Development. All rights reserved.
+              &copy; {translate("Retal Development. All rights reserved.")}
             </p>
           </Copyright>
         </div>
@@ -30,42 +33,46 @@ const SignIn = () => {
 
       <div className="text-area-screen half-screen bg-gray">
         <div className="content-area">
-          <div className="switch-lang dark-color text-end">
-            <Link to="#">
-              العربية
-            </Link>
-          </div>
-
+          <SwitchLanguage className="text-end" />
           <div className="text-block">
-            <h1>Hello</h1>
-            <p>Please enter your information to connect to your account.</p>
+            <h1>{translate("Hello")}</h1>
+            <p>
+              {translate(
+                "Please enter your information to connect to your account."
+              )}
+            </p>
 
             <FormField
-              label="Your email or phone number"
+              label={translate("Your email or phone number")}
               control={
                 <TextField
                   className="textbox textbox-v2 h-50 icon-end"
                   name="phone"
                   id="phone"
-                  placeholder="Your email or phone number"
+                  placeholder={translate("Your email or phone number")}
                   icon={<i className="sm-icon user-icon"></i>}
                 />
               }
             />
 
             <button
-              onClick={() => {navigate('/verify-number')}}
+              onClick={() => {
+                navigate("/verify-number");
+              }}
               className="theme-btn btn-primary btn-lg w-100 mt-20"
             >
-              Connect
+              {translate("Connect")}
             </button>
           </div>
 
           <div className="bottom-text text-center">
             <p>
-              Having trouble logging into your account?
-              <strong>Please contact the <Link to="/faqs">Help Center</Link> </strong>
-            </p> 
+              {translate("Having trouble logging into your account?")}
+              <strong>
+                {translate("Please contact the")}
+                <Link to="/faqs">{translate("Help Center")}</Link>{" "}
+              </strong>
+            </p>
           </div>
         </div>
       </div>

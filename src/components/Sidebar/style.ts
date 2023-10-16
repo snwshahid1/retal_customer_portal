@@ -9,17 +9,18 @@ export const SidebarWrapper = styled.aside`
   color: var(--white);
   transition: all 0.4s;
   position: fixed;
-  left: 0;
   top: 0;
   z-index: 999;
   overflow: auto;
   padding: 20px;
-  transform: translate(-270px);
   min-width: 270px;
   width: 270px;
   height: 100%;
   font-size: 13px;
   text-wrap: nowrap;
+  ${( ({theme}) => theme.directionLeft)}: 0;
+  transform: translate(${(({theme}) => theme.dir == 'rtl' ? "calc(100% + 270px)" : "-270px")});
+  opacity: 0;
 
   @media ${DeviceUp.md} {
     min-width: 220px;
@@ -29,10 +30,12 @@ export const SidebarWrapper = styled.aside`
     height: auto;
     overflow: visible;
     transform: translate(0);
+    opacity: 1;
   }
 
   &.active {
     transform: translate(0);
+    opacity: 1;
 
     @media ${DeviceUp.md} {
       max-width: 60px;
@@ -73,7 +76,7 @@ export const SidebarWrapper = styled.aside`
     cursor: pointer;
     position: fixed;
     z-index: 99999;
-    left: 194px;
+    ${( ({theme}) => theme.directionLeft)}: 194px;
     top: 200px;
     background: var(--secondary-color);
     height: 40px;
@@ -100,10 +103,10 @@ export const SidebarWrapper = styled.aside`
     transition: all 0.3s;
   }
   .sidebar-toggle-btn.open {
-    left: 40px;
+    ${(({theme}) => theme.directionLeft)}: 40px;
   }
   .sidebar-toggle-btn.open .arrow-icon-right {
-    transform: rotate(0deg);
+    transform: rotate(${(({theme}) => theme.dir == 'rtl' ? "180deg" : "0deg")});
   }
 
   .nav-wrapper {
@@ -142,8 +145,9 @@ export const SidebarWrapper = styled.aside`
           width: 14px;
           height: 14px;
           min-width: 14px;
-          margin: 0 13px 0 2px;
           opacity: 0.3;
+          margin-${( ({theme}) => theme.directionLeft)}: 2px;
+          margin-${( ({theme}) => theme.directionRight)}: 13px;
         }
 
         &.selected,
@@ -164,15 +168,15 @@ export const SidebarWrapper = styled.aside`
 export const HamburgerButton = styled.button`
   position: absolute;
   top: 10px;
-  left: 10px;
+  ${(({theme}) => theme.directionLeft)}: 10px;
 
   @media ${DeviceUp.sm} {
-    left: 20px;
+    ${(({theme}) => theme.directionLeft)}: 20px;
   }
 
   &.open {
     top: 5px;
-    left: 225px;
+    ${(({theme}) => theme.directionLeft)}: 225px;
     transition-delay: 0.35s;
     position: fixed;
   }
@@ -213,7 +217,7 @@ export const UserProfile = styled.div`
   transition: all 0.3s;
 
   .toggleMenu {
-    margin-left: auto;
+    margin-${(({theme}) => theme.directionLeft)}: auto;
 
     .dots-icon {
       opacity: 0.3;
@@ -232,12 +236,13 @@ export const UserProfile = styled.div`
           height: 12px;
           display: none;
           position: absolute;
-          right: 10px;
+          ${(({theme}) => theme.directionRight)}: 10px;
           top: 0;
           bottom: 0;
           margin: auto;
           background: url(${ArrowIcon}) no-repeat center center;
           filter: invert(75%) sepia(96%) saturate(18%) hue-rotate(275deg) brightness(100%) contrast(104%);
+          transform: rotate(${(({theme}) => theme.dir == 'rtl' ? "180deg" : "0deg")});
         }
 
         &:hover {
@@ -256,7 +261,7 @@ export const UserProfile = styled.div`
           min-width: 15px;
           width: 15px;
           height: 15px;
-          margin-right: 15px;
+          margin-${(({theme}) => theme.directionRight)}: 15px;
         }
       }
     }
@@ -265,7 +270,7 @@ export const UserProfile = styled.div`
   .user-img {
     min-width: 40px;
     width: 40px;
-    margin-right: 16px;
+    margin-${(({theme}) => theme.directionRight)}: 16px;
     position: relative;
 
     img {
@@ -284,7 +289,7 @@ export const UserProfile = styled.div`
       padding: 4px 5px;
       position: absolute;
       bottom: -11px;
-      left: 10px;
+      ${(({theme}) => theme.directionLeft)}: 10px;
       font-family: var(--font-famiyl-secondary);
       font-weight: 700;
     }
