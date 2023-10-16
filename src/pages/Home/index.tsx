@@ -4,7 +4,6 @@ import LogoRetal from "src/assets/images/retal-logo-white.svg";
 import RetalHome from "src/assets/images/home-bg-img.png";
 import { Copyright } from "src/components/Sidebar/style";
 import { useTranslation } from "src/Hooks/useTranslation";
-import { useEffect } from "react";
 import SwitchLanguage from "src/elements/SwitchLanguage";
 
 const Home = () => {
@@ -41,7 +40,7 @@ const Home = () => {
 
         <Copyright>
           <p className="fs-10">
-            &copy; {translate("Retal Development. All rights reserved.")}
+            &copy;  {translate("Retal Development. All rights reserved.")}
           </p>
         </Copyright>
       </div>

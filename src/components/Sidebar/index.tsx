@@ -9,8 +9,10 @@ import NavLinks from "./NavLinks";
 import ProfileImage from "src/assets/images/user-img1.png";
 import ToggleDropdown from "src/components/ToggleDropdown";
 import { useClickAway } from "@uidotdev/usehooks";
+import { useTranslation } from "src/Hooks/useTranslation";
 
 const Sidebar: FC<any> = () => {
+  let { translate } = useTranslation();
   const [activeSidebar, setActiveSidebar] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -51,10 +53,10 @@ const Sidebar: FC<any> = () => {
           <div className="d-flex">
             <div className="user-img">
               <img src={ProfileImage} alt="User" />
-              <span className="hide-sm-nav">MEMBER</span>
+              <span className="hide-sm-nav">{translate("MEMBER")}</span>
             </div>
             <div className="username hide-sm-nav">
-              <strong>Saleh Abdullah</strong>
+              <strong>{translate("Saleh Abdullah")}</strong>
               <span>#2861493</span>
             </div>
           </div>
@@ -71,14 +73,14 @@ const Sidebar: FC<any> = () => {
               <li onClick={() => setToggleMenu(false)}>
                 <Link to="/profile">
                   <i className="user-icon"></i>
-                  <span>My Profile</span>
+                  <span>{translate("My Profile")}</span>
                 </Link>
               </li>
 
               <li onClick={() => setToggleMenu(false)}>
                 <Link to="/profile">
                   <i className="logout-icon"></i>
-                  <span>Logout</span>
+                  <span>{translate("Logout")}</span>
                 </Link>
               </li>
             </ul>
@@ -86,9 +88,9 @@ const Sidebar: FC<any> = () => {
         </UserProfile>
 
         <div className="nav-wrapper">
-          <h4>Your Essentials</h4>
+          <h4>{translate("Your Essentials")}</h4>
           <NavLinks NavRoutes={EssentialsRoutes} handleSidebar={closeSidebar} />
-          <h4>Services</h4>
+          <h4>{translate("Services")}</h4>
           <NavLinks NavRoutes={ServicesRoutes} handleSidebar={closeSidebar} />
         </div>
 
@@ -103,7 +105,7 @@ const Sidebar: FC<any> = () => {
             </Link>
           </ContactBox> */}
           <Copyright>
-            <p className="fs-10">&copy; Retal Development. All rights reserved.</p>
+            <p className="fs-10">&copy; {translate("Retal Development. All rights reserved.")}</p>
           </Copyright>
         </div>
       </SidebarWrapper>

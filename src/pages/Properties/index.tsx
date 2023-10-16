@@ -5,8 +5,10 @@ import { PropertiesHolder } from "./style";
 import PropertyImg1 from "src/assets/images/property-img1.png";
 import PropertyImg2 from "src/assets/images/property-img2.png";
 import PropertyImg3 from "src/assets/images/property-img3.png";
+import { useTranslation } from "src/Hooks/useTranslation";
 
 const Properties = () => {
+  let { translate } = useTranslation();
   const PropertiesData = [
     {
       image: PropertyImg1,
@@ -38,7 +40,7 @@ const Properties = () => {
       </div>
       <PropertiesHolder>
         <div className="border-bottom">
-          <h4>Properties (3)</h4>
+          <h4>{translate("Properties")} (3)</h4>
         </div>
         <div className="d-grid properties-list-wrapper">
           {PropertiesData.map(( property, i: number) => (

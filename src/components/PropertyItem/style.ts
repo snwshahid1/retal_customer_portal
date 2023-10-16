@@ -32,7 +32,7 @@ export const Property = styled.div`
       .property-title {
         h3 {
           margin-bottom: 4px;
-          font-size: 18px;
+          font-size: var(--fs-18);
         }
         p {
           margin: 0;

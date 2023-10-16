@@ -290,8 +290,10 @@ export const UserProfile = styled.div`
       position: absolute;
       bottom: -11px;
       ${(({theme}) => theme.directionLeft)}: 10px;
-      font-family: var(--font-famiyl-secondary);
+      font-family: var(--font-family-secondary);
       font-weight: 700;
+      min-width: 40px;
+      text-align: center;
     }
   }
 

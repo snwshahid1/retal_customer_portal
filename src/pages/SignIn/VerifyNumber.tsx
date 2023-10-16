@@ -36,7 +36,7 @@ const VerifyNumber = () => {
 
           <div className="text-block">
             <h1>{translate("Verify your number")}</h1>
-            <p>Enter the code sent to +966 50 680 3006</p>
+            <p>{translate("Enter the code sent to")} +966 50 680 3006</p>
 
             <div className="code-fields">
               <TextField
@@ -68,27 +68,29 @@ const VerifyNumber = () => {
               />
             </div>
             <div className="send-code-btn">
-              <button
-                onClick={() => {}}
-                className="btn-inline mt-20 mb-3"
-              >
-                Send a new code
+              <button onClick={() => {}} className="btn-inline mt-20 mb-3">
+                {translate("Send a new code")}
               </button>
             </div>
 
             <button
-              onClick={() => {navigate('/dashboard#salesTeam')}}
+              onClick={() => {
+                navigate("/dashboard#salesTeam");
+              }}
               className="theme-btn btn-primary btn-lg w-100"
             >
-              Validate
+              {translate("Validate")}
             </button>
           </div>
 
           <div className="bottom-text text-center">
             <p>
-              Having trouble logging into your account?
-              <strong>Please contact the <Link to="/faqs">Help Center</Link> </strong>
-            </p> 
+              {translate("Having trouble logging into your account?")}
+              <strong>
+                {translate("Please contact the")}{" "}
+                <Link to="/faqs">{translate("Help Center")}</Link>{" "}
+              </strong>
+            </p>
           </div>
         </div>
       </div>

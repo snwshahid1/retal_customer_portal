@@ -3,8 +3,10 @@ import { FC, memo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { DeviceDown } from "src/styles/breakpoints";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { useTranslation } from 'src/Hooks/useTranslation';
 
 const NavLinks: FC<any> = ({ NavRoutes, handleSidebar }) => {
+  let { translate } = useTranslation();
   const location = useLocation();
   const isMobile = useMediaQuery(`only screen and ${DeviceDown.md}`);
 
@@ -21,7 +23,7 @@ const NavLinks: FC<any> = ({ NavRoutes, handleSidebar }) => {
               }
           >
               <i className={val.iconClass}></i>
-              <span>{val.name}</span>
+              <span>{translate(`${val.name}`)}</span>
             </Link>
           </li>
         ))
